@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+#root {
+  height:100%;
+}
+.App {
+  height:100%;
+}
+#main {
+  height:100%;
+}
+
+.BigLogo-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+}
+
