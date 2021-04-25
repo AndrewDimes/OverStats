@@ -15,17 +15,18 @@ export default function HomePage() {
                     </div>
 
                 </div>
-                <div className="grey eight wide column LandingMessage">
+                <div id="sidebar"className="eight wide column LandingMessage">
                     <div className="content">
-                        <h1 className="title">statMap.Overwatch</h1>
-                        <span className="subtitle">statMap is the resource for viewing your up to date Overwatch stats</span>
+                        <h1 className="title">statMap.</h1>
+                        <span className="subtitle"><h4>statMap is the resource for viewing your up to date Overwatch stats. Made with MongoDB, Express, React & Node</h4></span><br></br>
                         <div id="buttons" className="row">
-                            <button className="landing-button">Log In</button>
-                            <button className="landing-button">Sign Up</button>
+                            <Link to='/login'><button id="button" className="ui primary button">Log In</button></Link>
+                            <Link to='/signup'><button id="button" className="ui secondary button">Sign Up</button></Link>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>)
+        </div>
+        )
 
 }

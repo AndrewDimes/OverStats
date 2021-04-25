@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Form, Grid, Header, Image, Segment, Message } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Segment, Message, Input } from 'semantic-ui-react'
 import userService from '../../utils/userService';
-import { useHistory, Link} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 
 export default function SignUpPage(props) {
@@ -70,14 +70,20 @@ export default function SignUpPage(props) {
     }
 
     return (
-        <>
-            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-                <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header as='h2' color='teal' textAlign='center'>
-                        <Image src='' /> Sign Up
-                  </Header>
-                    <Form autoComplete="off" onSubmit={handleSubmit}>
-                        <Segment stacked>
+        <div id="main" className="ui vertically divided grid">
+            <div className="row">
+                <div className="blue eight wide column BigLogo">
+                    <div className="BigLogo-content">
+                        <h1>Join now to get started</h1>
+                    </div>
+
+                </div>
+                <div id="sidebar" className=" eight wide column LandingMessage">
+                    <div className="content">
+                        <h1 className="title">Sign Up</h1>
+
+                        <Form className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
+
                             <Form.Input
                                 name="username"
                                 placeholder="username"
@@ -139,25 +145,25 @@ export default function SignUpPage(props) {
                                 />
                             </Form.Field>
                             <Button
+                                color='blue'
+                                
                                 type="submit"
                                 className="btn"
                                 disabled={invalidForm}
                             >
                                 Signup
                       </Button>
-                        </Segment>
-                        <Message>
-                        Already have an account? <Link to='/login'>Log In</Link>
-                    </Message>
-                        {error ? <ErrorMessage error={error} /> : null}
-                    </Form>
 
-                </Grid.Column>
-            </Grid>
-        </>
+                            <Message>
+                                Already have an account? <Link to='/login'>Log In</Link>
+                            </Message>
+                            {error ? <ErrorMessage error={error} /> : null}
+                        </Form>
 
-
-
-    );
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 
 }

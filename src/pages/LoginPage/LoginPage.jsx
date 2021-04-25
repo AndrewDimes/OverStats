@@ -32,59 +32,63 @@ export default function LoginPage(props) {
             await userService.login(state);
             // Route to wherever you want!
             props.handleSignUpOrLogin()
-            history.push('/')
+            history.push('/profile')
 
         } catch (err) {
             // Invalid user data (probably duplicate email)
             setError(err.message)
         }
     }
-
-
     return (
-        <>
-            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-                <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header as='h2' color='teal' textAlign='center'>
-                        <Image src='' /> Log-in to your account
-            </Header>
-                    <Form autoComplete="off" onSubmit={handleSubmit}>
-                        <Segment stacked>
-                            <Form.Input
-                                type="email"
+        <div id="main" className="ui vertically divided grid">
+            <div className="row">
+                <div className="blue eight wide column BigLogo">
+                    <div className="BigLogo-content">
+                        <h1>Join now to get started</h1>
+                    </div>
 
-                                name="email"
-                                placeholder="email"
-                                value={state.email}
-                                onChange={handleChange}
-                                required
-                            />
-                            <Form.Input
-                                name="password"
-                                type="password"
-                                placeholder="password"
-                                value={state.password}
-                                onChange={handleChange}
-                                required
-                            />
-                            <Button
-                                color='teal'
-                                fluid size='large'
-                                type="submit"
-                                className="btn"
-                                disabled={invalidForm}
-                            >
-                                Login
+                </div>
+                <div id="sidebar"className=" eight wide column LandingMessage">
+                    <div className="content">
+                        <h1 className="title">Log In</h1>
+                        <Form className="login-form" autoComplete="off" onSubmit={handleSubmit}>
+                            
+                                <Form.Input
+                                    type="email"
+                                    name="email"
+                                    placeholder="email"
+                                    value={state.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <Form.Input
+                                    name="password"
+                                    type="password"
+                                    placeholder="password"
+                                    value={state.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <Button
+                                    color='blue'
+                                    fluid size='large'
+                                    type="submit"
+                                    className="btn"
+                                    disabled={invalidForm}
+                                >
+                                    Login
                 </Button>
-                        </Segment>
-                    </Form>
-                    <Message>
-                        New to us? <Link to='/signup'>Sign Up</Link>
-                    </Message>
-                    {error ? <ErrorMessage error={error} /> : null}
-                </Grid.Column>
-            </Grid>
-        </>
-    );
+                            
+                            <Message>
+                                New to us? <Link to='/signup'>Sign Up</Link>
+                            </Message>
+                            {error ? <ErrorMessage error={error} /> : null}
+                        </Form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
