@@ -6,21 +6,23 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
-export default function BarChart({winRatio, profileData, stats}){
-    console.log(winRatio)
+export default function Graph({winRatio, profileData, stats}){
+    console.log(stats,'here')
     const options = {
         backgroundColor: "rgb(0,133,208)",
         title: {
-            text: `Win Ratio: ${winRatio}%`
+            text: `Average per 10 Mins`
         },
         data: [
         {
             // Change type to "doughnut", "line", "splineArea", etc.
-            type: "doughnut",
+            type: "column",
             dataPoints: [
            
-                { label: "Wins", y: parseInt(stats.games.won), color: "rgb(100,248,40)" },
-                { label: "Losses", y: parseInt(stats.games.played)-parseInt(stats.games.won), color: "rgb(255,23,25)"}
+                { label: "Eliminations", y: parseInt(stats.careerStats.allHeroes.average.eliminationsAvgPer10Min), color: "rgb(100,248,40)" },
+                { label: "Obj Kills", y: parseInt(stats.careerStats.allHeroes.average.objectiveKillsAvgPer10Min), color: "rgb(255,23,25)"},
+                {label: "Deaths", y: parseInt(stats.careerStats.allHeroes.average.deathsAvgPer10Min), color: "rgb(255,23,25)"},
+
              
             ]
         }
@@ -36,4 +38,4 @@ export default function BarChart({winRatio, profileData, stats}){
 		);
 
 }
-                         
+                      

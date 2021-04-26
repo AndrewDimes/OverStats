@@ -31,7 +31,7 @@ function App() {
     if(user){
       let p = user.battletag.replace('#', '-')
       console.log(p)
-      setApiLink(`https://ow-api.com/v1/stats/${user.platform}/${user.region}/${p}/profile`)
+      setApiLink(`https://ow-api.com/v1/stats/${user.platform}/${user.region}/${p}/complete`)
     }
 
 

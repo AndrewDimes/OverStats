@@ -16,13 +16,13 @@ export default function NavBar({ handleLogOut, user }) {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row className="menu-item">
-          <Grid.Column><Link to="/profile"><button className="blue massive ui button">Profile</button></Link></Grid.Column>
+          <Grid.Column><Link to="/profile"><button id="nav-btn" className="yellow massive ui button">Profile</button></Link></Grid.Column>
         </Grid.Row>
         <Grid.Row className="menu-item">
-          <Grid.Column><Link to="/search"><button className="blue massive ui button">Search</button></Link></Grid.Column>
+          <Grid.Column><Link to="/search"><button id="nav-btn" className="yellow massive ui button">Search</button></Link></Grid.Column>
         </Grid.Row>
         <Grid.Row className="menu-item">
-          <Grid.Column><Link to="/" onClick={handleLogOut}><button className="blue massive ui button">Logout</button></Link></Grid.Column>
+          <Grid.Column><Link to="/" onClick={handleLogOut}><button id="nav-btn" className="yellow massive ui button">Logout</button></Link></Grid.Column>
         </Grid.Row>
       </Grid>
 

@@ -11,11 +11,8 @@ import BarChart from '../../components/BarChart/BarChart'
 
 export default function ProfilePage({ handleLogOut, user, profileData }) {
 
-    const winRatioRaw = parseInt(profileData.competitiveStats.games.won)/parseInt(profileData.competitiveStats.games.played)
 
-    const winSplit = winRatioRaw.toFixed(2).toString().split('.')
-    const winRatio = winSplit[1]
-    console.log(winRatio)
+
     return (
         <div id="main" className="ui vertically divided grid">
             <div className="row">
@@ -27,7 +24,7 @@ export default function ProfilePage({ handleLogOut, user, profileData }) {
                 </div>
                 <div className="blue thirteen wide column">
                     <div className="content">
-                        <ProfileInfo winRatio={winRatio} profileData={profileData} user={user} />
+                        <ProfileInfo profileData={profileData} user={user} />
                         
                      
                     </div>
