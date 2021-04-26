@@ -74,11 +74,16 @@ body{
 }
 
 .subtitle{
+  
   margin-left:20%;
   margin-right:20%;
 }
 .title{
   color: rgb(0, 128, 215);
+  font-size: 450%;
+}
+.content-title{
+  font-size: 350%;
 }
 
 #button{
@@ -95,4 +100,24 @@ body{
 
 .signup-form{
   width:60%;
+}
+
+.ow {
+  width:80%;
+  height:auto;
+}
+
+#nav-bar{
+  height:100%;
+}
+.menu-item{
+ height:0%;
+ margin-top:-10%;
+ margin-bottom:-10%;
+}
+.user{
+width: 100%;
+}
+.user-name{
+  font-size: 150%;
 }

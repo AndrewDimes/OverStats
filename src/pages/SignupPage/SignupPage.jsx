@@ -14,7 +14,9 @@ export default function SignUpPage(props) {
         email: '',
         password: '',
         passwordConf: '',
-        bio: ''
+        battletag: '',
+        platform: '',
+        region: ''
     });
 
     const history = useHistory()
@@ -56,7 +58,7 @@ export default function SignUpPage(props) {
             props.handleSignUpOrLogin() // gets the token from localstorage and updates the user state in our app.js
             // with the correct user object from the current token
             // then route to the homepage
-            history.push('/') // defined above from react-router-dom
+            history.push('/profile') // defined above from react-router-dom
             // after this we can go whereever
 
         } catch (err) {
@@ -74,7 +76,7 @@ export default function SignUpPage(props) {
             <div className="row">
                 <div className="blue eight wide column BigLogo">
                     <div className="BigLogo-content">
-                        <h1>Join now to get started</h1>
+                        <h1 className="content-title">Join now to get started</h1>
                     </div>
 
                 </div>
