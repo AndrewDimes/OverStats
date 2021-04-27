@@ -6,10 +6,11 @@ import NavBar from '../../components/NavBar/NavBar';
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import BarChart from '../../components/BarChart/BarChart'
-
+import { useLocation } from 'react-router-dom';
 
 
 export default function ProfilePage({ handleLogOut, user, profileData }) {
+
 
 
 

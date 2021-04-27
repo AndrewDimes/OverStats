@@ -36,26 +36,11 @@ export default function SearchPage({ handleLogOut, user }) {
         let p = state.battletag.replace('#', '-')
         console.log(p)
         setApiLink(`https://ow-api.com/v1/stats/${state.platform}/${state.region}/${p}/complete`)
-        // try {
-        //     fetch(apiLink)
-        //         .then((res) => res.json())
-        //         .then((data) => {
-        //             console.log(data, 'here')
-        //             setSearchData(data)
-        //             console.log(searchData)
-        //             setReady(true)
-        //         });
-        // } catch (err) {
-        //     console.log(err.message)
-        //     setError(err.message)
-
-        // }
 
     }
 
     useEffect(() => {
-          async function makeApiCall() {
-           try {
+          function makeApiCall() {
             fetch(apiLink)
             .then((res) => res.json())
             .then((data) => {
@@ -64,11 +49,6 @@ export default function SearchPage({ handleLogOut, user }) {
                 console.log(searchData)
                 setReady(true)
           });
-
-           } catch(err) {
-               setError('invalid')
-           }
-    
           };
           makeApiCall();
         
@@ -86,7 +66,7 @@ export default function SearchPage({ handleLogOut, user }) {
                 <div className="blue thirteen wide column LandingMessage">
                     <div className="content">
 
-                    {ready ? <ProfileInfo profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
+                    {ready ? <ProfileInfo name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
                     {error}
                         
                     </div>

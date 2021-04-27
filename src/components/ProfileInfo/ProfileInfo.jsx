@@ -8,7 +8,7 @@ import Graph from '../../components/Graph/Graph';
 import * as d3 from 'd3'
 
 
-export default function ProfileInfo({user, profileData}) {
+export default function ProfileInfo({user, profileData, name}) {
   console.log(profileData)
   const [stats, setStats] = useState(profileData.competitiveStats)
   const [mode, setMode] = useState('Competitive')
@@ -48,11 +48,13 @@ export default function ProfileInfo({user, profileData}) {
     <div class="column">
     <h2 class="ui header">
   <img src={profileData.icon}class="ui circular image"></img>
-  {user.battletag}</h2>
+  {name ? name : user.battletag}</h2>
+  {profileData.ratings ? 
   <div id="medals" class="ui statistics">
         <div class="statistic">
           <div class="value">
-          <img  src={profileData.ratings ? profileData.ratings[0].rankIcon : null}></img>
+             <img  src={profileData.ratings[0].rankIcon}></img>
+          
           </div>
           <div class="label">
             Tank
@@ -75,6 +77,9 @@ export default function ProfileInfo({user, profileData}) {
           </div>
         </div>
       </div>
+      :
+      <h1 style={{color:'black'}}>Unranked</h1>
+  }
   {stats ? <Graph stats={stats} profileData={profileData} winRatio={winRatio}/> : "loading..."}
   <div id="medals" class="ui statistics">
         <div class="statistic">
@@ -113,9 +118,57 @@ export default function ProfileInfo({user, profileData}) {
 <div class="or"></div>
 <button class={buttonComp ? 'ui positive button' : 'ui button'} onClick={changeComp}>Competitive</button>
 </div>
+
 <h1>{mode}</h1>
+
 {stats ? <BarChart stats={stats} profileData={profileData} winRatio={winRatio}/> : "loading..."}
       </div>
+      <table class="ui inverted grey table">
+  <thead>
+    <tr><th>Heroes</th>
+    <th>Won</th>
+    <th>Loss</th>
+    <th>Win Rate</th>
+    <th>K/D</th>
+    <th>Avg Obj Time</th>
+    <th>Avg Time On Fire</th>
+    <th>Time Played</th>
+  </tr></thead><tbody>
+    <tr>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+  
+
+    </tr>
+    <tr>
+    <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+    </tr>
+    <tr>
+    <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+      <td>x</td>
+    </tr>
+
+  </tbody>
+</table>
 
     </div>
   </div>
