@@ -9,24 +9,30 @@ import * as d3 from 'd3'
 
 
 export default function ProfileInfo({user, profileData}) {
+  console.log(profileData)
   const [stats, setStats] = useState(profileData.competitiveStats)
   const [mode, setMode] = useState('Competitive')
   const [winRatio, setWinRatio] = useState(0)
+  const [buttonQuick, setButtonQuick] = useState(false)
+  const [buttonComp, setButtonComp] = useState(true)
 
 
 
   function changeQuick(){
     setStats(profileData.quickPlayStats)
     setMode('Quickplay')
+    setButtonQuick(true)
+    setButtonComp(false)
   }
   function changeComp(){
     setStats(profileData.competitiveStats)
     setMode('Competitive')
+    setButtonQuick(false)
+    setButtonComp(true)
   }
 
   useEffect(() => {
     const winRatioRaw = parseInt(stats.games.won)/parseInt(stats.games.played)
-
     const winSplit = winRatioRaw.toFixed(2).toString().split('.')
     setWinRatio(winSplit[1])
     
@@ -46,7 +52,7 @@ export default function ProfileInfo({user, profileData}) {
   <div id="medals" class="ui statistics">
         <div class="statistic">
           <div class="value">
-          <img  src={profileData.ratings[0].rankIcon}></img>
+          <img  src={profileData.ratings ? profileData.ratings[0].rankIcon : null}></img>
           </div>
           <div class="label">
             Tank
@@ -54,7 +60,7 @@ export default function ProfileInfo({user, profileData}) {
         </div>
         <div class="statistic">
           <div class="value">
-          <img  src={profileData.ratings[1].rankIcon}></img>
+          <img  src={profileData.ratings ? profileData.ratings[1].rankIcon : null}></img>
           </div>
           <div class="label">
             Damage
@@ -62,18 +68,18 @@ export default function ProfileInfo({user, profileData}) {
         </div>
         <div class="statistic">
           <div class="value">
-          <img  src={profileData.ratings[2].rankIcon}></img>
+          <img  src={profileData.ratings ? profileData.ratings[2].rankIcon : null}></img>
           </div>
           <div class="label">
             Support
           </div>
         </div>
       </div>
-  <Graph stats={stats} profileData={profileData} winRatio={winRatio}/>
+  {stats ? <Graph stats={stats} profileData={profileData} winRatio={winRatio}/> : "loading..."}
   <div id="medals" class="ui statistics">
         <div class="statistic">
           <div class="value">
-            {stats.awards.medalsGold}
+            {stats ? stats.awards.medalsGold : null }
           </div>
           <div class="label">
             Gold Medals
@@ -81,7 +87,7 @@ export default function ProfileInfo({user, profileData}) {
         </div>
         <div class="statistic">
           <div class="value">
-          {stats.awards.medalsSilver}
+          {stats ? stats.awards.medalsSilver : null}
           </div>
           <div class="label">
             Silver Medals
@@ -89,7 +95,7 @@ export default function ProfileInfo({user, profileData}) {
         </div>
         <div class="statistic">
           <div class="value">
-          {stats.awards.medalsBronze}
+          {stats ? stats.awards.medalsBronze : null}
           </div>
           <div class="label">
             Bronze Medals
@@ -102,12 +108,13 @@ export default function ProfileInfo({user, profileData}) {
     <div className="chart" >
 
 <div class="ui buttons">
-<button class="ui button" onClick={changeQuick}>Quickplay</button>
+  
+<button class={buttonQuick ? 'ui positive button' : 'ui button'} onClick={changeQuick}>Quickplay</button>
 <div class="or"></div>
-<button class="ui positive button" onClick={changeComp}>Competitive</button>
+<button class={buttonComp ? 'ui positive button' : 'ui button'} onClick={changeComp}>Competitive</button>
 </div>
 <h1>{mode}</h1>
-<BarChart stats={stats} profileData={profileData} winRatio={winRatio}/>
+{stats ? <BarChart stats={stats} profileData={profileData} winRatio={winRatio}/> : "loading..."}
       </div>
 
     </div>

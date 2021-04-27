@@ -1,13 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import SearchForm from '../../components/SearchForm/SearchForm'
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 
-export default function SearchPage({handleLogOut, user}) {
+export default function SearchPage({ handleLogOut, user }) {
+
+    const [invalidForm, setValidForm] = useState(false)
+    const [error, setError] = useState('')
+    const [apiLink, setApiLink] = useState(``)
+    const [searchData, setSearchData] = useState({})
+    const [ready, setReady] = useState(false)
+    const [state, setState] = useState({
+        battletag: '',
+        platform: '',
+        region: ''
+    });
+
+    const history = useHistory()
+
+    function getError(errorMsg){
+        setError(errorMsg)
+    }
+    function handleChange(e) {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
+    async function handleSubmit() {
+        let p = state.battletag.replace('#', '-')
+        console.log(p)
+        setApiLink(`https://ow-api.com/v1/stats/${state.platform}/${state.region}/${p}/complete`)
+        // try {
+        //     fetch(apiLink)
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             console.log(data, 'here')
+        //             setSearchData(data)
+        //             console.log(searchData)
+        //             setReady(true)
+        //         });
+        // } catch (err) {
+        //     console.log(err.message)
+        //     setError(err.message)
+
+        // }
+
+    }
+
+    useEffect(() => {
+          async function makeApiCall() {
+           try {
+            fetch(apiLink)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data, 'here')
+                setSearchData(data)
+                console.log(searchData)
+                setReady(true)
+          });
+
+           } catch(err) {
+               setError('invalid')
+           }
+    
+          };
+          makeApiCall();
+        
+      }, [apiLink])
+
+
     return (
         <div id="main" className="ui vertically divided grid">
             <div className="row">
@@ -15,15 +82,17 @@ export default function SearchPage({handleLogOut, user}) {
                     <div className="BigLogo-content">
                         <NavBar user={user} handleLogOut={handleLogOut} />
                     </div>
-
                 </div>
                 <div className="blue thirteen wide column LandingMessage">
                     <div className="content">
-                        <SearchForm />
+
+                    {ready ? <ProfileInfo profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
+                    {error}
+                        
                     </div>
                 </div>
             </div>
         </div>
-        )
+    )
 
 }

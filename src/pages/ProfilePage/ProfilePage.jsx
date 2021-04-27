@@ -24,7 +24,7 @@ export default function ProfilePage({ handleLogOut, user, profileData }) {
                 </div>
                 <div className="blue thirteen wide column">
                     <div className="content">
-                        <ProfileInfo profileData={profileData} user={user} />
+                        {Object.keys(profileData).length ? <ProfileInfo profileData={profileData} user={user} /> : <div class="ui massive active centered inline loader"></div> }
                         
                      
                     </div>

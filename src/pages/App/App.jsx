@@ -27,6 +27,7 @@ function App() {
     setUser({ user: null })
   }
   
+  
   useEffect(() => {
     if(user){
       let p = user.battletag.replace('#', '-')
