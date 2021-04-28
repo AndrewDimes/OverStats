@@ -7,7 +7,9 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 
 
 
+
 export default function ProfileInfo({handleChange, handleSubmit, state, error}) {
+    console.log(error, 'error')
     return (
         
 
@@ -41,8 +43,11 @@ export default function ProfileInfo({handleChange, handleSubmit, state, error}) 
         >
             Search
   </Button>
-  {error ? <ErrorMessage error="test" /> : null}
+ 
+  {error ? <Message style={{ backgroundColor: 'grey', color: 'red'}}> <b>{error}</b>  </Message> : null}
+ 
     </Form>
+
 
      
 

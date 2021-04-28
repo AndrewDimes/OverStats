@@ -16,7 +16,7 @@ export default function ProfilePage({ handleLogOut, user, profileData }) {
 
     return (
         <div  className="ui vertically divided grid">
-            <div id="over-stop"  className="row">
+            <div   className="row">
                 <div id="sidebar" className=" three wide column">
                     <div className="BigLogo-content">
                         <NavBar user={user} handleLogOut={handleLogOut} />
@@ -24,7 +24,7 @@ export default function ProfilePage({ handleLogOut, user, profileData }) {
 
                 </div>
                 <div className="grey thirteen wide column">
-                    <div id="over" className="content">
+                    <div  className="content">
                         {Object.keys(profileData).length ? <ProfileInfo profileData={profileData} user={user} /> : <div className="ui massive active centered inline loader"></div> }
                         
                      

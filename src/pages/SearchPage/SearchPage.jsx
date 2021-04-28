@@ -45,8 +45,14 @@ export default function SearchPage({ handleLogOut, user }) {
             .then((data) => {
                 console.log(data, 'here')
                 setSearchData(data)
-                console.log(searchData)
-                setReady(true)
+                console.log(searchData,'herrreeee')
+                if(data.error){
+                    setReady(false)
+                    setError(data.error)
+                } else {
+                    setReady(true)
+                }
+                
           });
           };
           makeApiCall();
@@ -66,7 +72,7 @@ export default function SearchPage({ handleLogOut, user }) {
                     <div  className="content">
 
                     {ready ? <ProfileInfo name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
-                    {error}
+                    
                         
                     </div>
                 </div>
