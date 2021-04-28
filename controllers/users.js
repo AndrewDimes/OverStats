@@ -8,7 +8,8 @@ const s3 = new S3(); // initialize the construcotr
 
 module.exports = {
   signup,
-  login
+  login,
+  edit
 };
 
 function signup(req, res) {
@@ -40,6 +41,27 @@ function signup(req, res) {
   })
   //////////////////////////////////////////////////////////////////////////////////
  
+}
+async function edit(req,res){
+  console.log('User Id',req.params)
+  console.log('body', req.body)
+  try {
+    const user = await User.findOne({_id: req.user._id});
+    console.log(user,'user is here')
+    user.battletag = req.body.battletag
+    user.region = req.body.region
+    user.platform = req.body.platform
+    await user.save();
+    const token = createJWT(user);
+    res.json({ token })
+
+  } catch(err){
+    return res.status(400).json(err);
+  }
+
+
+
+
 }
 
 async function login(req, res) {

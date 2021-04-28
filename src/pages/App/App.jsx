@@ -5,6 +5,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import SearchPage from '../SearchPage/SearchPage';
 import userService from '../../utils/userService'
 import * as d3 from 'd3'
@@ -15,9 +16,9 @@ function App() {
   const [user, setUser] = useState(userService.getUser()) // getUser decodes our JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like 
   // this  const token = createJWT(user); // where user was the document we created from mongo
-  const [profileData, setProfileData] = useState({})
   const [error, setError] = useState('')
-  const [apiLink, setApiLink] = useState('')
+ 
+  
   function handleSignUpOrLogin() {
     setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
   }
@@ -28,25 +29,7 @@ function App() {
   }
   
   
-  useEffect(() => {
-    if(user){
-      let p = user.battletag.replace('#', '-')
-     
-      setApiLink(`https://ow-api.com/v1/stats/${user.platform}/${user.region}/${p}/complete`)
-    }
-
-
-      const makeApiCall = () => {
-          fetch(apiLink)
-          .then((res) => res.json())
-          .then((data) => {
-              setProfileData(data)
-          });
-
-      };
-      makeApiCall();
-    
-  }, [apiLink])
+ 
   
   return (
     <div className="App">
@@ -57,6 +40,9 @@ function App() {
         <Route exact path="/signup">
           <SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />
         </Route>
+        <Route exact path="/edit">
+          <EditProfilePage handleSignUpOrLogin={handleSignUpOrLogin} user={user} handleLogOut={handleLogOut} />
+        </Route>
         <Route exact path="/">
           <HomePage />
         </Route>
@@ -64,7 +50,7 @@ function App() {
         {userService.getUser() ? 
         <Switch>
         <Route exact path='/profile'>
-          <ProfilePage profileData={profileData} user={user} handleLogOut={handleLogOut} />
+          <ProfilePage  setUser={setUser} user={user} handleLogOut={handleLogOut} />
         </Route>
         <Route exact path="/search">
           <SearchPage user={user} handleLogOut={handleLogOut} />

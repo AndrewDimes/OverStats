@@ -11,7 +11,7 @@ import DamageGraph from '../DamageGraph/DamageGraph'
 import * as d3 from 'd3'
 
 
-export default function ProfileInfo({ user, profileData, name }) {
+export default function ProfileInfo({ user, profileData, name, profile }) {
   const scrollToDiv = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 
@@ -117,7 +117,7 @@ export default function ProfileInfo({ user, profileData, name }) {
                 <div className="content">
                   <a className="header">{name ? name : user.battletag}</a>
                   <div className="description">
-                    <p><b>Level: {profileData.level}</b></p>
+                    <p>{profile ? <Link style={{color:'gold'}} to="/edit">Edit Profile</Link> : null}</p>
                     {profileData.ratings ?
                       <div id="medals" className="ui statistics">
                         <div className="statistic">

@@ -25,13 +25,13 @@ export default function HeroTimeGraph({winRatio, profileData, stats}){
     }
  
     
-    console.log(fireTimeFinal)
+    
     
 
     const options = {
         backgroundColor: "rgb(118,118,118)",
         title: {
-            text: `On Fire/Obj Time`
+            text: `On Fire/Obj Time per 10mins`
         },
         data: [
         {

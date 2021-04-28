@@ -12,11 +12,11 @@ export default function DamageGraph({stats}){
     let dmg;
     stats.average.healingDoneAvgPer10Min ? heals = stats.average.healingDoneAvgPer10Min : heals = 0;
     stats.average.allDamageDoneAvgPer10Min ? dmg = stats.average.allDamageDoneAvgPer10Min : dmg = 0;
-    console.log(stats)
+    
     const options = {
         backgroundColor: "rgb(118,118,118)",
         title: {
-            text: `Damage/Heals`
+            text: `Damage/Heals per 10mins`
         },
         data: [
         {

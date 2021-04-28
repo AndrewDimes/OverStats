@@ -22,6 +22,23 @@ function signup(user) {
   // The above could have been written as
   //.then((token) => token.token);
 }
+function edit(body, userId){
+  console.log(body,'in userService.edit')
+  return fetch(BASE_URL + 'edit/' + userId, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken(),
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Can not edit')
+  })
+  .then(({token}) => tokenService.setToken(token));
+  
+}
 
 function getUser() {
   return tokenService.getUserFromToken();
@@ -46,9 +63,12 @@ function login(creds) {
 }
 
 
+
+
 export default {
   signup, 
   logout,
   login,
-  getUser
+  getUser,
+  edit
 };

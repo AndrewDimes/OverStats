@@ -49,7 +49,8 @@ export default function LoginPage(props) {
 
                 </div>
                 <div id="sidebar"className=" eight wide column LandingMessage">
-                    <div id="right-items" className="content">
+                                        <div id="right-items" className="content">
+                    
                         <h1 className="title">Log In</h1>
                         <Form className="login-form" autoComplete="off" onSubmit={handleSubmit}>
                             
@@ -83,6 +84,8 @@ export default function LoginPage(props) {
                                 New to us? <Link to='/signup'>Sign Up</Link>
                             </Message>
                             {error ? <ErrorMessage error={error} /> : null}
+                            <Message>For testing purposes: <br></br>Email - tester@email.com<br></br>Password - tester</Message>
+
                         </Form>
 
                     </div>
