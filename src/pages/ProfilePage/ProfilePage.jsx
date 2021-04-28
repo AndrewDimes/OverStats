@@ -9,48 +9,57 @@ import BarChart from '../../components/BarChart/BarChart'
 import { useLocation } from 'react-router-dom';
 
 
-export default function ProfilePage({ handleLogOut, user, setUser}) {
+export default function ProfilePage({ handleLogOut, user, setUser }) {
     const [apiLink, setApiLink] = useState('')
     const [profileData, setProfileData] = useState({})
     useEffect(() => {
-        if(user){
-          let p = user.battletag.replace('#', '-')
-         
-          setApiLink(`https://ow-api.com/v1/stats/${user.platform}/${user.region}/${p}/complete`)
+        if (user) {
+            let p = user.battletag.replace('#', '-')
+
+            setApiLink(`https://ow-api.com/v1/stats/${user.platform}/${user.region}/${p}/complete`)
         }
-    
-    
-          const makeApiCall = () => {
-              fetch(apiLink)
-              .then((res) => res.json())
-              .then((data) => {
-                  setProfileData(data)
-              });
-    
-          };
-          makeApiCall();
-        
-      }, [apiLink])
+        console.log(profileData, 'profile dataaa')
+
+        const makeApiCall = () => {
+            fetch(apiLink)
+                .then((res) => res.json())
+                .then((data) => {
+                    setProfileData(data)
+                });
+
+        };
+        makeApiCall();
+
+    }, [apiLink])
 
 
     return (
-        <div  className="ui vertically divided grid">
-            <div   className="row">
+
+
+        <div className="ui vertically divided grid">
+            <div className="row">
                 <div id="sidebar" className=" three wide column">
                     <div className="BigLogo-content">
                         <NavBar user={user} handleLogOut={handleLogOut} />
                     </div>
-
                 </div>
-                <div className="grey thirteen wide column">
-                    <div  className="content">
-                        {Object.keys(profileData).length ? <ProfileInfo profile={true} profileData={profileData} user={user} /> : <div className="ui massive active centered inline loader"></div> }
-                        
-                     
+                {profileData.competitiveStats ?
+                    <div className="grey thirteen wide column">
+                        <div className="content">
+                            {Object.keys(profileData).length > 1 ? <ProfileInfo profile={true} profileData={profileData} user={user} /> : <div className="ui massive active centered inline loader"></div>}
+                        </div>
                     </div>
-                </div>
+                    :
+                    <div className="grey thirteen wide column">
+                        <div id="edit-msg" className="content">
+                            <h1 >This is your profile page.<br></br> Please enter a valid battletag <Link to="/edit" style={{color:'red'}}>here</Link> </h1>
+                        </div>
+                    </div>
+}
+
             </div>
         </div>
+
     )
 
 }
