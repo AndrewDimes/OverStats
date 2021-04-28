@@ -81,7 +81,7 @@ export default function SignUpPage(props) {
 
                 </div>
                 <div id="sidebar" className=" eight wide column LandingMessage">
-                    <div className="content">
+                    <div id="right-items" className="content">
                         <h1 className="title">Sign Up</h1>
 
                         <Form className="signup-form" autoComplete="off" onSubmit={handleSubmit}>

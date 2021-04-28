@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     if(user){
       let p = user.battletag.replace('#', '-')
-      console.log(p)
+     
       setApiLink(`https://ow-api.com/v1/stats/${user.platform}/${user.region}/${p}/complete`)
     }
 
@@ -40,7 +40,6 @@ function App() {
           fetch(apiLink)
           .then((res) => res.json())
           .then((data) => {
-              console.log(data)
               setProfileData(data)
           });
 

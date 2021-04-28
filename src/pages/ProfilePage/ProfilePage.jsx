@@ -15,17 +15,17 @@ export default function ProfilePage({ handleLogOut, user, profileData }) {
 
 
     return (
-        <div id="main" className="ui vertically divided grid">
-            <div className="row">
-                <div id="sidebar" className="three wide column">
+        <div  className="ui vertically divided grid">
+            <div id="over-stop"  className="row">
+                <div id="sidebar" className=" three wide column">
                     <div className="BigLogo-content">
                         <NavBar user={user} handleLogOut={handleLogOut} />
                     </div>
 
                 </div>
-                <div className="blue thirteen wide column">
-                    <div className="content">
-                        {Object.keys(profileData).length ? <ProfileInfo profileData={profileData} user={user} /> : <div class="ui massive active centered inline loader"></div> }
+                <div className="grey thirteen wide column">
+                    <div id="over" className="content">
+                        {Object.keys(profileData).length ? <ProfileInfo profileData={profileData} user={user} /> : <div className="ui massive active centered inline loader"></div> }
                         
                      
                     </div>

@@ -49,7 +49,7 @@ export default function LoginPage(props) {
 
                 </div>
                 <div id="sidebar"className=" eight wide column LandingMessage">
-                    <div className="content">
+                    <div id="right-items" className="content">
                         <h1 className="title">Log In</h1>
                         <Form className="login-form" autoComplete="off" onSubmit={handleSubmit}>
                             

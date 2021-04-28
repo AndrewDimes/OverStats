@@ -6,12 +6,17 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
-export default function Graph({winRatio, profileData, stats}){
-    
+export default function DamageGraph({stats}){
+
+    let heals;
+    let dmg;
+    stats.average.healingDoneAvgPer10Min ? heals = stats.average.healingDoneAvgPer10Min : heals = 0;
+    stats.average.allDamageDoneAvgPer10Min ? dmg = stats.average.allDamageDoneAvgPer10Min : dmg = 0;
+    console.log(stats)
     const options = {
         backgroundColor: "rgb(118,118,118)",
         title: {
-            text: `Overall Avg Kills/Deaths per 10mins`
+            text: `Damage/Heals`
         },
         data: [
         {
@@ -19,9 +24,10 @@ export default function Graph({winRatio, profileData, stats}){
             type: "column",
             dataPoints: [
            
-                { label: "Eliminations", y: parseInt(stats.careerStats.allHeroes.average.eliminationsAvgPer10Min), color: "rgb(100,248,40)" },
-                { label: "Obj Kills", y: parseInt(stats.careerStats.allHeroes.average.objectiveKillsAvgPer10Min), color: "blue"},
-                {label: "Deaths", y: parseInt(stats.careerStats.allHeroes.average.deathsAvgPer10Min), color: "rgb(255,23,25)"},
+                { label: "Damage", y: dmg, color: "rgb(100,248,40)" },
+                { label: "Heals", y: heals, color: "pink"},
+                
+                
 
              
             ]
@@ -38,4 +44,3 @@ export default function Graph({winRatio, profileData, stats}){
 		);
 
 }
-                      

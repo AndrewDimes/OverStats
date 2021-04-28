@@ -16,7 +16,7 @@ export default function HomePage() {
 
                 </div>
                 <div id="sidebar"className="eight wide column LandingMessage">
-                    <div className="content">
+                    <div id="right-items" className="content">
                         <h1 className="title">OverStats</h1>
                         <span className="subtitle"><h4>Overwatch statistics made easy. Developed with MongoDB, Express, React & Node</h4></span><br></br>
                         <div id="buttons" className="row">

@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 
@@ -49,7 +50,7 @@ body{
   height:90vh;
 }
 .chart {
-  width:80%;
+  width:100%;
 }
 
 
@@ -65,11 +66,15 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#right-items {
   height:97vh;
 }
 
 #sidebar {
   background-color:rgb(231, 231, 231);
+  height:60%;
+ 
 
 }
 
@@ -123,13 +128,45 @@ width: 100%;
 }
 
 .profile {
-  width:100%;
+  width:95%;
+  
+  
+}
+.profile-table{
+  height:60%;
+  overflow: auto;
 }
 
 #medals {
   display: flex;
-  width:100%;
+  width:108%;
   align-items: center;
   justify-content: center;
-  
+}
+
+#lower{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#table {
+  margin-bottom: -120%;
+}
+
+#search-form{
+  margin-top:25%;
+}
+
+#over{
+  overflow:auto;
+}
+
+#over-stop{
+  height:100%;
+  overflow: hide;
+}
+
+.table-hover {
+  cursor:pointer;
 }

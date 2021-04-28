@@ -9,8 +9,9 @@ import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui
 
 export default function ProfileInfo({handleChange, handleSubmit, state, error}) {
     return (
+        
 
-        <Form className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
+<Form id="search-form"className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
         <Form.Input
             name="battletag"
             placeholder="battletag"
@@ -42,6 +43,9 @@ export default function ProfileInfo({handleChange, handleSubmit, state, error}) 
   </Button>
   {error ? <ErrorMessage error="test" /> : null}
     </Form>
+
+     
+
 
 
     )

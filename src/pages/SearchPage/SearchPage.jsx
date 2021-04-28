@@ -34,7 +34,6 @@ export default function SearchPage({ handleLogOut, user }) {
     }
     async function handleSubmit() {
         let p = state.battletag.replace('#', '-')
-        console.log(p)
         setApiLink(`https://ow-api.com/v1/stats/${state.platform}/${state.region}/${p}/complete`)
 
     }
@@ -63,8 +62,8 @@ export default function SearchPage({ handleLogOut, user }) {
                         <NavBar user={user} handleLogOut={handleLogOut} />
                     </div>
                 </div>
-                <div className="blue thirteen wide column LandingMessage">
-                    <div className="content">
+                <div className="grey thirteen wide column LandingMessage">
+                    <div  className="content">
 
                     {ready ? <ProfileInfo name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
                     {error}
