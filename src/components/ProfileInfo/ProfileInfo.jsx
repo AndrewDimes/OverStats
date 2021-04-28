@@ -53,10 +53,6 @@ export default function ProfileInfo({ user, profileData, name }) {
     if (kills === 0 && deaths === 0) {
       kd = 0
     }
-  
-  
-   
-
     return (
       // console.log(key[0],key[1].game.gamesWon ? key[1].game.gamesWon  : 0, key[1].game.gamesLost,
       //   key[1].game.gamesWon ? (key[1].game.gamesWon/key[1].game.gamesPlayed).toFixed(2) : 0,
@@ -219,13 +215,22 @@ export default function ProfileInfo({ user, profileData, name }) {
               {stats ? <BarChart stats={stats} heroe={false} profileData={profileData} winRatio={winRatio} /> : "loading..."}
               {stats ? <Graph stats={stats} profileData={profileData} winRatio={winRatio} /> : "loading..."}
 
-
+              
             </div>
-
           </div>
-
+          <div style={{backgroundColor: 'grey'}}id="hero-img" className="ui segment">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p><h1>{currentHero}</h1></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
+          <div className="hero-img" ></div>
           <div id="lower" className="ui grid">
-
             <div ref={compRef} className="four wide column">{stats ? <HeroElimsGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
             <div className="four wide column">{stats ? <BarChart stats={heroeStats} heroe={true} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
             <div className="four wide column">{stats ? <HeroTimeGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>

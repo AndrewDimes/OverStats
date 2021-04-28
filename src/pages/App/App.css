@@ -151,7 +151,7 @@ width: 100%;
   justify-content: center;
 }
 #table {
-  margin-bottom: -120%;
+  margin-bottom: -100%;
 }
 
 #search-form{
@@ -169,4 +169,7 @@ width: 100%;
 
 .table-hover {
   cursor:pointer;
+}
+#hero-img {
+  width:100%;
 }
