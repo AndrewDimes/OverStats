@@ -1,4 +1,4 @@
-  
+
 import React, { Component, useState, useEffect, useRef } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import userService from '../../utils/userService';
@@ -15,7 +15,7 @@ import * as d3 from 'd3'
 export default function ProfileInfo({ user, profileData, name, profile }) {
   const scrollToDiv = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-
+  const heroData = profileData.competitiveStats.careerStats ? profileData.competitiveStats.careerStats.ana : 'No Hero Data'
 
   const compRef = useRef(null);
   const isScroll = () => scrollToDiv(compRef);
@@ -24,7 +24,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   const [winRatio, setWinRatio] = useState(0)
   const [buttonQuick, setButtonQuick] = useState(false)
   const [buttonComp, setButtonComp] = useState(true)
-  const [heroeStats, setHeroeStats] = useState(profileData.competitiveStats.careerStats.ana)
+  const [heroeStats, setHeroeStats] = useState(heroData)
   const [currentHero, setCurrentHero] = useState('Ana')
 
 
@@ -35,7 +35,8 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
     scrollToDiv(compRef)
   }
 
-  const heroesList = Object.entries(stats.careerStats).map((key, value) => {
+
+  const heroesList = stats.careerStats ? Object.entries(stats.careerStats).map((key, value) => {
     let kills;
     let deaths;
     let kd;
@@ -72,12 +73,11 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
         <td>{key[1].average.timeSpentOnFireAvgPer10Min ? key[1].average.timeSpentOnFireAvgPer10Min : 0}</td>
         <td>{key[1].game.timePlayed ? key[1].game.timePlayed : 0}</td>
       </tr>
-
-
-
-
     );
-  });
+  })
+    : []
+
+
 
 
 
@@ -95,9 +95,13 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   }
 
   useEffect(() => {
-    const winRatioRaw = parseInt(stats.games.won) / parseInt(stats.games.played)
-    const winSplit = winRatioRaw.toFixed(2).toString().split('.')
-    setWinRatio(winSplit[1])
+    if (stats.game) {
+      const winRatioRaw = parseInt(stats.games.won) / parseInt(stats.games.played)
+      const winSplit = winRatioRaw.toFixed(2).toString().split('.')
+      setWinRatio(winSplit[1])
+
+    }
+
 
   }, [stats])
 
@@ -115,10 +119,10 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                 <a className="ui tiny image">
                   <img src={profileData.icon}></img>
                 </a>
-                <div className="content">
+                <div id ="profile-details" className="content">
                   <a className="header">{name ? name : user.battletag}</a>
                   <div className="description">
-                    <p>{profile ? <Link style={{color:'gold'}} to="/edit">Edit Profile</Link> : null}</p>
+                    <p>{profile ? <Link style={{ color: 'gold' }} to="/edit">Edit Profile</Link> : null}</p>
 
                     {profileData.ratings ?
                       <div id="medals" className="ui statistics">
@@ -154,7 +158,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                     <div id="medals" className="ui statistics">
                       <div className="statistic">
                         <div className="value">
-                          {stats ? stats.awards.medalsGold : null}
+                          {stats.awards ? stats.awards.medalsGold : null}
                         </div>
                         <div className="label">
                           Gold Medals
@@ -162,7 +166,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                       </div>
                       <div className="statistic">
                         <div className="value">
-                          {stats ? stats.awards.medalsSilver : null}
+                          {stats.awards ? stats.awards.medalsSilver : null}
                         </div>
                         <div className="label">
                           Silver Medals
@@ -170,7 +174,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                       </div>
                       <div className="statistic">
                         <div className="value">
-                          {stats ? stats.awards.medalsBronze : null}
+                          {stats.awards ? stats.awards.medalsBronze : null}
                         </div>
                         <div className="label">
                           Bronze Medals
@@ -185,7 +189,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
             <h1>{mode}</h1>
             <div className="profile-table">
-              <table id="table" className="ui selectable inverted grey table">
+              <table id="table" className="ui selectable inverted blue table">
                 <thead>
                   <tr><th>Heroes</th>
                     <th>Won</th>
@@ -214,13 +218,13 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                 <div className="or"></div>
                 <button className={buttonComp ? 'ui positive button' : 'ui button'} onClick={changeComp}>Competitive</button>
               </div><br></br><br></br>
-              {stats ? <BarChart stats={stats} heroe={false} profileData={profileData} winRatio={winRatio} /> : "loading..."}
-              {stats ? <Graph stats={stats} profileData={profileData} winRatio={winRatio} /> : "loading..."}
+              {stats.careerStats ? <BarChart stats={stats} heroe={false} profileData={profileData} winRatio={winRatio} /> : "loading..."}
+              {stats.careerStats ? <Graph stats={stats} profileData={profileData} winRatio={winRatio} /> : "loading..."}
 
-              
+
             </div>
           </div>
-          <div style={{backgroundColor: 'grey'}}id="hero-img" className="ui segment">
+          <div style={{ backgroundColor: 'rgb(0,103,164)' }} id="hero-img" className="ui segment">
             <p></p>
             <p></p>
             <p></p>
@@ -233,10 +237,10 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
           </div>
           <div className="hero-img" ></div>
           <div id="lower" className="ui grid">
-            <div ref={compRef} className="four wide column">{stats ? <HeroElimsGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
-            <div className="four wide column">{stats ? <BarChart stats={heroeStats} heroe={true} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
-            <div className="four wide column">{stats ? <HeroTimeGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
-            <div className="four wide column">{stats ? <DamageGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
+            <div ref={compRef} className="four wide column">{stats.careerStats ? <HeroElimsGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
+            <div className="four wide column">{stats.careerStats ? <BarChart stats={heroeStats} heroe={true} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
+            <div className="four wide column">{stats.careerStats ? <HeroTimeGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
+            <div className="four wide column">{stats.careerStats ? <DamageGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
           </div>
         </div>
       </div>

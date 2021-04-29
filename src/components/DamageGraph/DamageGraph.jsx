@@ -14,7 +14,7 @@ export default function DamageGraph({stats}){
     stats.average.allDamageDoneAvgPer10Min ? dmg = stats.average.allDamageDoneAvgPer10Min : dmg = 0;
     
     const options = {
-        backgroundColor: "rgb(118,118,118)",
+        backgroundColor: "rgb(0,133,208)",
         title: {
             text: `Damage/Heals per 10mins`
         },

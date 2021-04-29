@@ -13,17 +13,19 @@ export default function NavBar({ handleLogOut, user, onClick}) {
       <Grid id="nav-bar" className="nav">
         <Grid.Row>
           <Grid.Column >
-            <img className="ow" src="../../ow.png"></img><br></br> 
+          <h1 className="title">OverStats</h1> 
+            <img className="ow" src="../../retry.png"></img>
+            
           </Grid.Column>
         </Grid.Row>
         <Grid.Row className="menu-item">
-          <Grid.Column><Link to="/profile"><button style={{color:'rgb(67,66,65)'}}id="nav-btn" className="yellow massive ui button">Profile</button></Link></Grid.Column>
+          <Grid.Column><Link to="/profile"><button id="nav-btn" className="grey massive ui button">Profile</button></Link></Grid.Column>
         </Grid.Row>
         <Grid.Row className="menu-item">
-          <Grid.Column><Link to="/search" ><button onClick={onClick} style={{color:'rgb(67,66,65)'}} id="nav-btn" className="yellow massive ui button">Search</button></Link></Grid.Column>
+          <Grid.Column><Link to="/search" ><button onClick={onClick}  id="nav-btn" className="grey massive ui button">Search</button></Link></Grid.Column>
         </Grid.Row>
         <Grid.Row className="menu-item">
-          <Grid.Column><Link to="/" onClick={handleLogOut}><button style={{color:'rgb(67,66,65)'}} id="nav-btn" className="yellow massive ui button">Logout</button></Link></Grid.Column>
+          <Grid.Column><Link to="/" onClick={handleLogOut}><button  id="nav-btn" className="grey massive ui button">Logout</button></Link></Grid.Column>
         </Grid.Row>
 
       </Grid>

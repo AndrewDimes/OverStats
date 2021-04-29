@@ -44,15 +44,15 @@ export default function ProfilePage({ handleLogOut, user, setUser }) {
                     </div>
                 </div>
                 {profileData.competitiveStats ?
-                    <div className="grey thirteen wide column">
+                    <div className="blue thirteen wide column">
                         <div className="content">
                             {Object.keys(profileData).length ? <ProfileInfo profile={true} profileData={profileData} user={user} /> : <div className="ui massive active centered inline loader"></div>}
                         </div>
                     </div>
                     :
-                    <div className="grey thirteen wide column">
+                    <div className="blue thirteen wide column">
                         <div id="edit-msg" className="content">
-                            <h1 >This is your profile page.<br></br> Please enter a valid battletag <Link to="/edit" style={{color:'red'}}>here</Link> </h1>
+                            <h1 >This is your profile page.<br></br> Please enter a valid battletag <Link to="/edit" style={{color:'gold'}}>here</Link> </h1>
                         </div>
                     </div>
 }

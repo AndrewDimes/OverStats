@@ -138,14 +138,12 @@ export default function SignUpPage(props) {
                                 fluid
                                 key="platform"
                                 name="platform"
-                                label='Platform'
                                 options={options}
                                 onChange={handleChange}
                                 placeholder='Platform'
                             />
                             <Form.Select
                                 fluid
-                                label='Region'
                                 name="region"
                                 options={optionsTwo}
                                 onChange={handleChange}

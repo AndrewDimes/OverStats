@@ -24,7 +24,7 @@ export default function ProfileInfo({ handleChange, handleSubmit, state, error, 
 
 
         <Form id="search-form" className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
-            {edit ? <Message style={{ backgroundColor: 'grey' }}><h1>Edit Profile</h1></Message> : <Message style={{ backgroundColor: 'grey' }}><h1>Search</h1></Message>}
+            {edit ? <Message style={{ backgroundColor: 'rgb(0,103,164)' }}><h1 style={{color:'white'}}>Edit Profile</h1></Message> : <Message style={{ backgroundColor: 'rgb(0,103,164)' }}><h1 style={{color:'white'}}>Search</h1></Message>}
             <Form.Input
                 name="battletag"
                 placeholder="PlayerName or Battletag#1234"
@@ -36,42 +36,29 @@ export default function ProfileInfo({ handleChange, handleSubmit, state, error, 
                 fluid
                 key="platform"
                 name="platform"
-                label='Platform'
                 options={options}
                 onChange={handleChange}
                 placeholder='Platform'
             />
             <Form.Select
                 fluid
-                label='Region'
                 name="region"
                 options={optionsTwo}
                 onChange={handleChange}
                 placeholder='Region'
             />
-            {/* <Form.Input
-                name="platform"
-                placeholder="Platform(PC, XBL, PSN) "
-                value={state.platform}
-                onChange={handleChange}
-                required
-            />
-            <Form.Input
-                name="region"
-                placeholder="Region(US, EU, ASIA) "
-                value={state.region}
-                onChange={handleChange}
-                required
-            /> */}
+            {edit ? <Message style={{ backgroundColor: 'rgb(0,103,164)'}}> <Link to='/delete'><b style={{color: ' red' }}>Delete Profile</b></Link>  </Message> : null }
+            {error ? <Message style={{ backgroundColor: 'rgb(0,103,164)', color: 'red' }}> <b>{error}</b>  </Message> : null}
+
             {edit ? <Button
-                color='green'
+                color=''
                 type="submit"
                 className="btn"
                 disabled=""
             >
                 Edit
   </Button> : <Button
-                color='green'
+                color=''
                 type="submit"
                 className="btn"
                 disabled=""
@@ -80,7 +67,6 @@ export default function ProfileInfo({ handleChange, handleSubmit, state, error, 
   </Button>
             }
 
-            {error ? <Message style={{ backgroundColor: 'grey', color: ' .red' }}> <b>{error}</b>  </Message> : null}
 
         </Form>
 

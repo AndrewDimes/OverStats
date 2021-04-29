@@ -9,7 +9,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export default function HeroElimsGraph({stats}){
     
     const options = {
-        backgroundColor: "rgb(118,118,118)",
+        backgroundColor: "rgb(0,133,208)",
         title: {
             text: `Total Elims/Deaths`
         },

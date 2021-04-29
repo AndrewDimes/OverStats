@@ -42,7 +42,7 @@ export default function BarChart({winRatio, profileData, stats, heroe}){
   
     
     const options = {
-        backgroundColor: "rgb(118,118,118)",
+        backgroundColor: "rgb(0,133,208)",
         title: {
             text: heroe ? `Win Rate: ${imSry}%` : `Overall Win Rate: ${winRatio}%`
         },

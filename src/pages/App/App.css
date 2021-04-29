@@ -84,7 +84,7 @@ body{
   margin-right:20%;
 }
 .title{
-  color: rgb(0,123, 197);
+  color: rgb(0,133, 208);
   font-size: 450%;
 }
 .content-title{
@@ -180,3 +180,6 @@ width: 100%;
   margin-top: 30%;
 }
 
+#profile-details {
+  margin-left: -13%;
+}

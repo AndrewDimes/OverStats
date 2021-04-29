@@ -93,7 +93,7 @@ export default function SearchPage({ handleLogOut, user }) {
                         <NavBar onClick={onClick} user={user} handleLogOut={handleLogOut} />
                     </div>
                 </div>
-                <div className="grey thirteen wide column LandingMessage">
+                <div className="blue thirteen wide column LandingMessage">
                     <div  className="content">
 
                     {ready ? <ProfileInfo profile={false} name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}

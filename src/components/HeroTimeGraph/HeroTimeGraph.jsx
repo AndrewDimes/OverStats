@@ -29,7 +29,7 @@ export default function HeroTimeGraph({winRatio, profileData, stats}){
     
 
     const options = {
-        backgroundColor: "rgb(118,118,118)",
+        backgroundColor: "rgb(0,133,208)",
         title: {
             text: `On Fire/Obj Time per 10mins`
         },

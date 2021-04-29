@@ -80,7 +80,7 @@ export default function EditProfilePage({user, handleLogOut, handleSignUpOrLogin
                         <NavBar user={user} handleLogOut={handleLogOut} />
                     </div>
                 </div>
-                <div className="grey thirteen wide column LandingMessage">
+                <div className="blue thirteen wide column LandingMessage">
                     <div className="content">
                         <SearchForm error={error} handleSubmit={handleSubmit} edit={true} state={state} handleChange={handleChange}/>
                     </div>
