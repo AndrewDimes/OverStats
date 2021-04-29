@@ -119,6 +119,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                   <a className="header">{name ? name : user.battletag}</a>
                   <div className="description">
                     <p>{profile ? <Link style={{color:'gold'}} to="/edit">Edit Profile</Link> : null}</p>
+
                     {profileData.ratings ?
                       <div id="medals" className="ui statistics">
                         <div className="statistic">

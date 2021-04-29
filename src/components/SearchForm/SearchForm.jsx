@@ -17,7 +17,7 @@ export default function ProfileInfo({handleChange, handleSubmit, state, error, e
     {edit ? <Message style={{backgroundColor:'grey'}}><h1>Edit Profile</h1></Message> : <Message style={{backgroundColor:'grey'}}><h1>Search</h1></Message>}
         <Form.Input
             name="battletag"
-            placeholder="battletag"
+            placeholder="PlayerName or Battletag#1234"
             value={state.battletag}
             onChange={handleChange}
             required
