@@ -44,8 +44,7 @@ export default function LoginPage(props) {
             <div className="row">
                 <div className="blue eight wide column BigLogo">
                     <div className="BigLogo-content">
-                        <h1 className="content-title">Join now to get started</h1>
-                    </div>
+                    <img className="ow" src="../../retry.png"></img><br></br>                    </div>
 
                 </div>
                 <div id="sidebar"className=" eight wide column LandingMessage">

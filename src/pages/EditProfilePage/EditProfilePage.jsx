@@ -48,12 +48,28 @@ export default function EditProfilePage({user, handleLogOut, handleSignUpOrLogin
     };
     makeApiCall(); 
     }
-
     function handleChange(e) {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
+        console.log(e.target.key)
+        let name;
+        if(e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN' ){
+            name="platform"
+        }
+        if(e.target.textContent === 'US' || e.target.textContent === 'EU' || e.target.textContent === 'ASIA' ){
+            name="region"
+        }
+        
+        if(e.target.name){
+            setState({
+                ...state,
+                [e.target.name]: e.target.value
+            })
+        } else {
+            setState({
+                ...state,
+                [name]: e.target.textContent
+            })
+        }
+
     }
 
     return (

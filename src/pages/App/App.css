@@ -84,11 +84,12 @@ body{
   margin-right:20%;
 }
 .title{
-  color: rgb(0, 128, 215);
+  color: rgb(0,123, 197);
   font-size: 450%;
 }
 .content-title{
   font-size: 350%;
+ 
 }
 
 #button{
@@ -114,11 +115,12 @@ body{
 
 #nav-bar{
   height:100%;
+  position: fixed;
 }
 .menu-item{
  height:0%;
- margin-top:-10%;
- margin-bottom:-10%;
+ margin-top:-8%;
+ margin-bottom:-8%;
 }
 .user{
 width: 100%;
@@ -178,7 +180,3 @@ width: 100%;
   margin-top: 30%;
 }
 
-#avatar{
-
-width:100%;
-}

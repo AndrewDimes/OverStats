@@ -46,7 +46,7 @@ export default function ProfilePage({ handleLogOut, user, setUser }) {
                 {profileData.competitiveStats ?
                     <div className="grey thirteen wide column">
                         <div className="content">
-                            {Object.keys(profileData).length > 1 ? <ProfileInfo profile={true} profileData={profileData} user={user} /> : <div className="ui massive active centered inline loader"></div>}
+                            {Object.keys(profileData).length ? <ProfileInfo profile={true} profileData={profileData} user={user} /> : <div className="ui massive active centered inline loader"></div>}
                         </div>
                     </div>
                     :

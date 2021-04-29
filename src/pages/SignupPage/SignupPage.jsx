@@ -23,10 +23,27 @@ export default function SignUpPage(props) {
 
 
     function handleChange(e) {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
+        console.log(e.target.key)
+        let name;
+        if(e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN' ){
+            name="platform"
+        }
+        if(e.target.textContent === 'US' || e.target.textContent === 'EU' || e.target.textContent === 'ASIA' ){
+            name="region"
+        }
+        
+        if(e.target.name){
+            setState({
+                ...state,
+                [e.target.name]: e.target.value
+            })
+        } else {
+            setState({
+                ...state,
+                [name]: e.target.textContent
+            })
+        }
+
     }
     async function handleSubmit(e) {
         // add this later
@@ -70,14 +87,23 @@ export default function SignUpPage(props) {
     function handleFileInput(e) {
         setSelectedFile(e.target.files[0])
     }
+    const options = [
+        { key: 'pc', text: 'PC', value: 'pc' },
+        { key: 'xbl', text: 'XBL', value: 'xbl' },
+        { key: 'psn', text: 'PSN', value: 'psn' },
+    ]
+    const optionsTwo = [
+        { text: 'US', value: 'us' },
+        { text: 'EU', value: 'eu' },
+        { text: 'ASIA', value: 'asia' },
+    ]
 
     return (
         <div id="main" className="ui vertically divided grid">
             <div className="row">
                 <div className="blue eight wide column BigLogo">
                     <div className="BigLogo-content">
-                        <h1 className="content-title">Join now to get started</h1>
-                    </div>
+                    <img className="ow" src="../../retry.png"></img><br></br>                    </div>
 
                 </div>
                 <div id="sidebar" className=" eight wide column LandingMessage">
@@ -108,19 +134,22 @@ export default function SignUpPage(props) {
                                 onChange={handleChange}
                                 required
                             />
-                            <Form.Input
+                            <Form.Select
+                                fluid
+                                key="platform"
                                 name="platform"
-                                placeholder="Platform(PC, XBL, PSN) "
-                                value={state.platform}
+                                label='Platform'
+                                options={options}
                                 onChange={handleChange}
-                                required
+                                placeholder='Platform'
                             />
-                            <Form.Input
+                            <Form.Select
+                                fluid
+                                label='Region'
                                 name="region"
-                                placeholder="Region(US, EU, ASIA) "
-                                value={state.region}
+                                options={optionsTwo}
                                 onChange={handleChange}
-                                required
+                                placeholder='Region'
                             />
                             <Form.Input
                                 name="password"
@@ -148,7 +177,7 @@ export default function SignUpPage(props) {
                             </Form.Field>
                             <Button
                                 color='blue'
-                                
+
                                 type="submit"
                                 className="btn"
                                 disabled={invalidForm}
