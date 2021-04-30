@@ -45,7 +45,7 @@ The search page gives you access to all Overwatch accounts across platforms. Ent
 - [Trello Board](https://trello.com/b/rp9a5koL/statmap-overwatch)
 
 ![Wireframe](public/wireframe1.png)
-![Wireframe](public/wireframe2).png
+![Wireframe](public/wireframe2.png)
 
 ### Getting Started
 To get started simply click the link before and sign up. If you would like a quick way to explore the site there is a tester account, its details are provided on the log in page.
