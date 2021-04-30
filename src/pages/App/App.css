@@ -232,16 +232,6 @@ width: 100%;
 
 }
 
-@media only screen and (max-width: 766px) {
-
-  .profile-table{
-    
-  
-  }
-
-}
-
-
 #medals {
   display: flex;
   width:108%;
@@ -279,7 +269,10 @@ width: 100%;
 #hero-img {
   width:100%;
   margin-left: 4%;
-  
+  padding-left: 600px;
+  border: 2px solid rgb(0,103,164);
+  box-sizing:border-box;
+  box-shadow: inset -550px 0 50px 10px rgb(0,103,164);
 }
 
 #edit-msg{
@@ -305,3 +298,6 @@ width: 100%;
   margin-top: 30%;
 }
 
+.hero-name{
+  font-family: 'Zen Dots', cursive;
+}

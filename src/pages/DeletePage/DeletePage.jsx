@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import userService from '../../utils/userService';
 import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
@@ -6,6 +6,11 @@ import NavBar from '../../components/NavBar/NavBar';
 
 
 export default function DeletePage({ handleLogOut, user }) {
+    let tester;
+    if(user.username === 'tester'){
+        tester = true;
+    }
+   
 
     async function handleClick() {
         console.log('pew', user)
@@ -13,7 +18,7 @@ export default function DeletePage({ handleLogOut, user }) {
         handleLogOut()
 
     }
-
+    console.log(user)
 
     return (
         <div id="main" className="ui vertically divided grid">
@@ -25,9 +30,22 @@ export default function DeletePage({ handleLogOut, user }) {
                 </div>
                 <div id="del-page" className="blue thirteen wide column LandingMessage">
                     <div id="del-buttons" className="content">
-                        <h1 >Are you sure you want to delete your account?<br></br> </h1>
+                 
+                        {tester ? 
+                        <>
+                        <h1 >You can not delete tester account.<br></br> </h1> 
+                        <Link to='/profile'><button id="del-button" className="ui grey button"> Back </button></Link>
+                        </>
+                        : 
+<>
+                        <h1 >Are you sure you want to delete your account?<br></br> </h1> 
                         <Link to='/'><button id="del-button" onClick={handleClick} className="ui red button">Yes</button></Link>
                         <Link to='/profile'><button id="del-button" className="ui grey button">No </button></Link>
+                        </>
+}
+                        
+                    
+
                     </div>
                 </div>
             </div>

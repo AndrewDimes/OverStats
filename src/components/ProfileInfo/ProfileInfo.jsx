@@ -14,7 +14,6 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   const scrollToDiv = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
   const heroData = profileData.competitiveStats.careerStats ? profileData.competitiveStats.careerStats.ana : 'No Hero Data'
-
   const compRef = useRef(null);
   const isScroll = () => scrollToDiv(compRef);
   const [stats, setStats] = useState(profileData.competitiveStats)
@@ -23,11 +22,11 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   const [buttonQuick, setButtonQuick] = useState(false)
   const [buttonComp, setButtonComp] = useState(true)
   const [heroeStats, setHeroeStats] = useState(heroData)
-  const [currentHero, setCurrentHero] = useState('Ana')
+  const [currentHero, setCurrentHero] = useState('All')
 
 
   function handleClick(heroeStats, heroName) {
-    if(heroName === 'allHeroes'){
+    if (heroName === 'allHeroes') {
       heroName = 'All'
     }
     setCurrentHero(heroName.charAt(0).toUpperCase() + heroName.slice(1))
@@ -49,7 +48,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
     } else {
       allHeroes = key[0].charAt(0).toUpperCase() + key[0].slice(1)
     }
-    
+
     if (kills === 0) {
       kd = 0
     }
@@ -104,8 +103,8 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
     <>
 
-      <div style={{width:'100%'}} className="profile">
-        <div style={{width:'100%'}}className="ui two column very relaxed grid">
+      <div style={{ width: '100%' }} className="profile">
+        <div style={{ width: '100%' }} className="ui two column very relaxed grid">
           <div className="column">
 
             <div className="ui items">
@@ -147,7 +146,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                         </div>
                       </div>
                       :
-                      <h1 style={{ color: 'black' }}>Unranked</h1>
+                      <h1 className="hero-name" style={{ color: 'black' }}>Unranked</h1>
                     }
                     <div id="medals" className="ui statistics">
                       <div className="statistic">
@@ -181,7 +180,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
             </div>
 
 
-            <h1>{mode}</h1>
+            <h1 className="hero-name">{mode}</h1>
             <div className="profile-table">
               <table id="table" className="ui selectable inverted blue table">
                 <thead>
@@ -218,17 +217,18 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
             </div>
           </div>
-          <div style={{ backgroundColor: 'rgb(0,103,164)' }} id="hero-img" className="ui segment">
+          <div style={{ backgroundColor: 'rgb(0,103,164)', backgroundImage: `url(../../${currentHero}.png)`, backgroundPosition:'left', backgroundRepeat: 'no-repeat' }} id="hero-img" className="ui segment">
 
             <p></p>
             <p></p>
-            <h1>{currentHero}</h1>
+            <p className="hero-name">Showing details for</p>
+            <span><h1 className="hero-name">{currentHero}</h1></span>
             <p></p>
             <p></p>
             <p></p>
             <p></p>
           </div>
-          
+
           <div id="lower" className="ui grid">
             <div ref={compRef} className="four wide column">{stats.careerStats ? <HeroElimsGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
             <div className="four wide column">{stats.careerStats ? <BarChart stats={heroeStats} heroe={true} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
