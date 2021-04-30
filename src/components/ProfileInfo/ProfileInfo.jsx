@@ -217,7 +217,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
             </div>
           </div>
-          <div style={{ backgroundColor: 'rgb(0,103,164)', backgroundImage: `url(/All.png)`, backgroundPosition:'left', backgroundRepeat: 'no-repeat' }} id="hero-img" className="ui segment">
+          <div style={{ backgroundColor: 'rgb(0,103,164)', backgroundImage: `url(/newall.png)`, backgroundPosition:'left', backgroundRepeat: 'no-repeat' }} id="hero-img" className="ui segment">
 
             <p></p>
             <p></p>
