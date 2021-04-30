@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {Grid} from 'semantic-ui-react'
 
 
 export default function NavBar({ handleLogOut, user, onClick}) {
-  console.log(user.photoUrl)
   return (
     <>
-
       <Grid id="nav-bar" className="nav">
         <Grid.Row>
           <Grid.Column >
-          <h1 className="title">OverStats</h1> 
-            <img className="ow" src="../../retry.png"></img>
+          <h1 className="nav-title">OverStats</h1> 
+            <img className="nav-ow" src="../../retry.png"></img>
             
           </Grid.Column>
         </Grid.Row>
@@ -27,9 +23,7 @@ export default function NavBar({ handleLogOut, user, onClick}) {
         <Grid.Row className="menu-item">
           <Grid.Column><Link to="/" onClick={handleLogOut}><button  id="nav-btn" className="grey massive ui button">Logout</button></Link></Grid.Column>
         </Grid.Row>
-
-      </Grid>
-
+</Grid>
     </>
   )
 }

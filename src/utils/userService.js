@@ -22,6 +22,24 @@ function signup(user) {
   // The above could have been written as
   //.then((token) => token.token);
 }
+
+function deleteUser(user){
+  console.log('in userservice')
+  return fetch(BASE_URL + user._id, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken(),
+      'Content-Type': 'application/json'
+    }
+
+  })
+  .then(res => {
+    if (res.ok) return res.json();
+    throw new Error('cant delete')
+  })
+  .then(({token}) => tokenService.removeToken(token));
+
+}
 function edit(body, userId){
   console.log(body,'in userService.edit')
   return fetch(BASE_URL + 'edit/' + userId, {
@@ -70,5 +88,6 @@ export default {
   logout,
   login,
   getUser,
-  edit
+  edit,
+  deleteUser
 };

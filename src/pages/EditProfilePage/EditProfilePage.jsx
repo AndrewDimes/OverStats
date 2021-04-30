@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 
 export default function EditProfilePage({user, handleLogOut, handleSignUpOrLogin}) {

@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
+import React from 'react';
 
-import { useHistory, Link } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+
+import { Link } from 'react-router-dom';
+
 
 
 export default function HomePage() {
@@ -18,7 +17,7 @@ export default function HomePage() {
                     </div>
 
                 </div>
-                <div style={{background:'fixed'}}id="sidebar" className="eight wide column LandingMessage">
+                <div style={{background:'fixed'}}id="sidebar" className="eight wide column LandingMessage container">
                     <div id="right-items" className="content">
                         <h1 className="title">OverStats</h1>
                         <span className="subtitle"><h4>Overwatch statistics made easy. Developed with MongoDB, Express, React & Node</h4></span><br></br>

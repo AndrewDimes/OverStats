@@ -1,34 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import BarChart from '../../components/BarChart/BarChart'
-import { useLocation } from 'react-router-dom';
 
 
-export default function ProfilePage({ handleLogOut, user, setUser }) {
+
+export default function ProfilePage({ handleLogOut, user }) {
     const [apiLink, setApiLink] = useState('')
     const [profileData, setProfileData] = useState({})
+    const makeApiCall = () => {
+        fetch(apiLink)
+    
+            .then((res) => res.json())
+            .then((data) => {
+                setProfileData(data)
+            })
+            .catch((err) => console.log(err))
+        }
+        
     useEffect(() => {
         if (user) {
             let p = user.battletag.replace('#', '-')
+            let region = user.region.toLowerCase()
+            let platform = user.platform.toLowerCase()
 
-            setApiLink(`https://ow-api.com/v1/stats/${user.platform}/${user.region}/${p}/complete`)
+            setApiLink(`https://ow-api.com/v1/stats/${platform}/${region}/${p}/complete`)
         }
-        console.log(profileData, 'profile dataaa')
 
-        const makeApiCall = () => {
-            fetch(apiLink)
-                .then((res) => res.json())
-                .then((data) => {
-                    setProfileData(data)
-                });
 
-        };
-        makeApiCall();
+
+        
+        if(apiLink !== ''){
+            makeApiCall();
+
+        }
+        
 
     }, [apiLink])
 

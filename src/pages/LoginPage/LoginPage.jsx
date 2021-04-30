@@ -3,7 +3,7 @@ import './LoginPage.css';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Message } from 'semantic-ui-react'
 
 
 export default function LoginPage(props) {
@@ -50,7 +50,7 @@ export default function LoginPage(props) {
                 <div id="sidebar"className=" eight wide column LandingMessage">
                                         <div id="right-items" className="content">
                     
-                        <h1 className="title">Log In</h1>
+                        <h1 className="login-title">Log In</h1>
                         <Form className="login-form" autoComplete="off" onSubmit={handleSubmit}>
                             
                                 <Form.Input
@@ -83,7 +83,7 @@ export default function LoginPage(props) {
                                 New to us? <Link to='/signup'>Sign Up</Link>
                             </Message>
                             {error ? <ErrorMessage error={error} /> : null}
-                            <Message>For testing purposes: <br></br>Email - tester@email.com<br></br>Password - tester</Message>
+                            <Message className="test-msg">For testing purposes: <br></br>Email - tester@email.com<br></br>Password - tester</Message>
 
                         </Form>
 

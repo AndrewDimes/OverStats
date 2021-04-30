@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Form, Grid, Header, Image, Segment, Message, Input } from 'semantic-ui-react'
+import { Button, Form, Message } from 'semantic-ui-react'
 import userService from '../../utils/userService';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -101,14 +101,14 @@ export default function SignUpPage(props) {
     return (
         <div id="main" className="ui vertically divided grid">
             <div className="row">
-                <div className="blue eight wide column BigLogo">
-                    <div className="BigLogo-content">
+                <div  id="signup-left" className="blue eight wide column BigLogo">
+                    <div  className="BigLogo-content">
                     <img className="ow" src="../../retry.png"></img><br></br>                    </div>
 
                 </div>
                 <div id="sidebar" className=" eight wide column LandingMessage">
                     <div id="right-items" className="content">
-                        <h1 className="title">Sign Up</h1>
+                        <h1 className="signup-title">Sign Up</h1>
 
                         <Form className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
 

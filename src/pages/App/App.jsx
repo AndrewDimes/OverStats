@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
@@ -7,8 +7,9 @@ import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import SearchPage from '../SearchPage/SearchPage';
+import DeletePage from '../DeletePage/DeletePage';
 import userService from '../../utils/userService'
-import * as d3 from 'd3'
+
 
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
         </Route>
         <Route exact path="/edit">
           <EditProfilePage handleSignUpOrLogin={handleSignUpOrLogin} user={user} handleLogOut={handleLogOut} />
+        </Route>
+        <Route exact path="/delete">
+          <DeletePage handleSignUpOrLogin={handleSignUpOrLogin} user={user} handleLogOut={handleLogOut} />
         </Route>
         <Route exact path="/">
           <HomePage />

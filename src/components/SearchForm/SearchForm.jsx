@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment, Select } from 'semantic-ui-react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Form, Message } from 'semantic-ui-react'
 
 
 
@@ -54,7 +52,7 @@ export default function ProfileInfo({ handleChange, handleSubmit, state, error, 
                 color=''
                 type="submit"
                 className="btn"
-                disabled=""
+               
             >
                 Edit
   </Button> : <Button

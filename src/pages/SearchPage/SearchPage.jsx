@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import SearchForm from '../../components/SearchForm/SearchForm'
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+
 
 
 export default function SearchPage({ handleLogOut, user }) {
 
-    const [invalidForm, setValidForm] = useState(false)
+   
     const [error, setError] = useState('')
     const [apiLink, setApiLink] = useState(``)
     const [searchData, setSearchData] = useState({})
@@ -21,13 +18,8 @@ export default function SearchPage({ handleLogOut, user }) {
         region: ''
     });
 
-    const history = useHistory()
 
-    function getError(errorMsg){
-        setError(errorMsg)
-    }
     function handleChange(e) {
-        console.log(e.target.key)
         let name;
         if(e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN' ){
             name="platform"
@@ -51,7 +43,9 @@ export default function SearchPage({ handleLogOut, user }) {
     }
     async function handleSubmit() {
         let p = state.battletag.replace('#', '-')
-        setApiLink(`https://ow-api.com/v1/stats/${state.platform}/${state.region}/${p}/complete`)
+        let platform = state.platform.toLowerCase()
+        let region = state.region.toLowerCase()
+        setApiLink(`https://ow-api.com/v1/stats/${platform}/${region}/${p}/complete`)
 
     }
 
@@ -70,9 +64,14 @@ export default function SearchPage({ handleLogOut, user }) {
                     setReady(true)
                 }
                 
-          });
+          })
+          .catch((err) => console.log(err))
           };
-          makeApiCall();
+          if(apiLink !== ''){
+            makeApiCall();
+
+          }
+          
         
       }, [apiLink])
 

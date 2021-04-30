@@ -9,8 +9,16 @@ const s3 = new S3(); // initialize the construcotr
 module.exports = {
   signup,
   login,
-  edit
+  edit, 
+  deleteUser
 };
+
+
+
+
+
+
+
 
 function signup(req, res) {
 
@@ -62,6 +70,19 @@ function signup(req, res) {
   //////////////////////////////////////////////////////////////////////////////////
  
 }
+
+function deleteUser(req, res){
+  console.log(req.params.id, 'in controller')
+  const user = User.findByIdAndRemove(req.params.id).exec().then(doc => {
+    if (!doc) {return res.status(404).end(); }
+    return res.status(204).end();
+  })
+  .catch(err => next(err));
+
+  
+
+}
+
 async function edit(req,res){
   console.log('User Id',req.params)
   console.log('body', req.body)

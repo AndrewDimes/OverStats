@@ -1,15 +1,13 @@
 
-import React, { Component, useState, useEffect, useRef } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
-import { useHistory, Link } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+
 import BarChart from '../../components/BarChart/BarChart'
 import Graph from '../../components/Graph/Graph';
 import HeroElimsGraph from '../HeroElimsGraph/HeroElimsGraph';
 import HeroTimeGraph from '../HeroTimeGraph/HeroTimeGraph';
 import DamageGraph from '../DamageGraph/DamageGraph'
-import * as d3 from 'd3'
+
 
 
 export default function ProfileInfo({ user, profileData, name, profile }) {
@@ -29,7 +27,6 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
 
   function handleClick(heroeStats, heroName) {
-    console.log(heroeStats.average)
     setCurrentHero(heroName)
     setHeroeStats(heroeStats)
     scrollToDiv(compRef)
@@ -95,7 +92,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   }
 
   useEffect(() => {
-    if (stats.game) {
+    if (stats) {
       const winRatioRaw = parseInt(stats.games.won) / parseInt(stats.games.played)
       const winSplit = winRatioRaw.toFixed(2).toString().split('.')
       setWinRatio(winSplit[1])
@@ -225,11 +222,10 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
             </div>
           </div>
           <div style={{ backgroundColor: 'rgb(0,103,164)' }} id="hero-img" className="ui segment">
+        
             <p></p>
             <p></p>
-            <p></p>
-            <p></p>
-            <p><h1>{currentHero}</h1></p>
+            <h1>{currentHero}</h1>
             <p></p>
             <p></p>
             <p></p>
@@ -244,9 +240,6 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
           </div>
         </div>
       </div>
-
-
-
 
     </>
   )
