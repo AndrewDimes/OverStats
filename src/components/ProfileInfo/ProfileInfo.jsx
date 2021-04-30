@@ -24,7 +24,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   const [heroeStats, setHeroeStats] = useState(heroData)
   const [currentHero, setCurrentHero] = useState('All')
 
-
+  console.log('ffs')
   function handleClick(heroeStats, heroName) {
     if (heroName === 'allHeroes') {
       heroName = 'All'
