@@ -81,11 +81,11 @@ body{
 }
 
 .subtitle{
-  
   margin-left:20%;
   margin-right:20%;
 }
 .title{
+  font-family: 'Zen Dots', cursive;
   color: rgb(0,133, 208);
   font-size: 450%;
 }
@@ -174,8 +174,9 @@ body{
   height:auto;
 }
 .nav-title{
+  font-family: 'Zen Dots', cursive;
   color: rgb(0,133, 208);
-  font-size: 280%;
+  font-size: 250%;
 }
 @media only screen and (max-width: 600px) {
   #nav-bar{
@@ -204,25 +205,42 @@ width: 100%;
 }
 
 .profile {
-  width:95%;
+  width:100%;
   
   
 }
 .profile-table{
-  height:55%;
+  height:60%;
   overflow: auto;
+  margin-bottom: -100%;
 }
-@media only screen and (max-width: 600px) {
-  .profile{
-    width:100%;
-  }
+@media only screen and (max-width: 1150px) {
+
   .profile-table{
-    display:none;
+    height:50%;
+    margin-bottom: -180%;
   }
-  #hero-img{
-    display: none;
-  }
+
 }
+@media only screen and (max-width: 900px) {
+
+  .profile-table{
+    height:40%;
+    margin-bottom: -350%;
+  
+  }
+
+}
+
+@media only screen and (max-width: 766px) {
+
+  .profile-table{
+    
+  
+  }
+
+}
+
 
 #medals {
   display: flex;
@@ -236,6 +254,7 @@ width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left:3%;
 }
 #table {
   margin-bottom: -100%;
@@ -259,6 +278,8 @@ width: 100%;
 }
 #hero-img {
   width:100%;
+  margin-left: 4%;
+  
 }
 
 #edit-msg{

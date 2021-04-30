@@ -44,41 +44,41 @@ export default function LoginPage(props) {
             <div className="row">
                 <div className="blue eight wide column BigLogo">
                     <div className="BigLogo-content">
-                    <img className="ow" src="../../retry.png"></img><br></br>                    </div>
+                        <img className="ow" src="../../retry.png"></img><br></br>                    </div>
 
                 </div>
-                <div id="sidebar"className=" eight wide column LandingMessage">
-                                        <div id="right-items" className="content">
-                    
+                <div id="sidebar" className=" eight wide column LandingMessage">
+                    <div id="right-items" className="content">
+
                         <h1 className="login-title">Log In</h1>
                         <Form className="login-form" autoComplete="off" onSubmit={handleSubmit}>
-                            
-                                <Form.Input
-                                    type="email"
-                                    name="email"
-                                    placeholder="email"
-                                    value={state.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-                                <Form.Input
-                                    name="password"
-                                    type="password"
-                                    placeholder="password"
-                                    value={state.password}
-                                    onChange={handleChange}
-                                    required
-                                />
-                                <Button
-                                    color='blue'
-                                    fluid size='large'
-                                    type="submit"
-                                    className="btn"
-                                    disabled={invalidForm}
-                                >
-                                    Login
+
+                            <Form.Input
+                                type="email"
+                                name="email"
+                                placeholder="email"
+                                value={state.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Form.Input
+                                name="password"
+                                type="password"
+                                placeholder="password"
+                                value={state.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Button
+                                color='blue'
+                                fluid size='large'
+                                type="submit"
+                                className="btn"
+                                disabled={invalidForm}
+                            >
+                                Login
                 </Button>
-                            
+
                             <Message>
                                 New to us? <Link to='/signup'>Sign Up</Link>
                             </Message>

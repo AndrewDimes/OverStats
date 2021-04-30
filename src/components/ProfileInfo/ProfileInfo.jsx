@@ -27,7 +27,10 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
 
   function handleClick(heroeStats, heroName) {
-    setCurrentHero(heroName)
+    if(heroName === 'allHeroes'){
+      heroName = 'All'
+    }
+    setCurrentHero(heroName.charAt(0).toUpperCase() + heroName.slice(1))
     setHeroeStats(heroeStats)
     scrollToDiv(compRef)
   }
@@ -44,8 +47,9 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
     if (key[0] === 'allHeroes') {
       allHeroes = 'All'
     } else {
-      allHeroes = key[0]
+      allHeroes = key[0].charAt(0).toUpperCase() + key[0].slice(1)
     }
+    
     if (kills === 0) {
       kd = 0
     }
@@ -53,13 +57,6 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
       kd = 0
     }
     return (
-      // console.log(key[0],key[1].game.gamesWon ? key[1].game.gamesWon  : 0, key[1].game.gamesLost,
-      //   key[1].game.gamesWon ? (key[1].game.gamesWon/key[1].game.gamesPlayed).toFixed(2) : 0,
-      //   key[1].combat.eliminations ? key[1].combat.eliminations : 0 ,'/',key[1].combat.deaths ? key[1].combat.deaths : 0,
-      //    key[1].average.objectiveTimeAvgPer10Min ? key[1].average.objectiveTimeAvgPer10Min : 0,
-      //     key[1].average.timeSpentOnFireAvgPer10Min ? key[1].average.timeSpentOnFireAvgPer10Min : 0, 
-      //     key[1].game.timePlayed ? key[1].game.timePlayed : 0 )
-
       <tr className="table-hover" key={value} onClick={() => handleClick(key[1], key[0])}>
         <td><b>{allHeroes}</b></td>
         <td>{key[1].game.gamesWon ? key[1].game.gamesWon : 0}</td>
@@ -107,8 +104,8 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
     <>
 
-      <div className="profile">
-        <div className="ui two column very relaxed grid">
+      <div style={{width:'100%'}} className="profile">
+        <div style={{width:'100%'}}className="ui two column very relaxed grid">
           <div className="column">
 
             <div className="ui items">
@@ -116,7 +113,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                 <a className="ui tiny image">
                   <img src={profileData.icon}></img>
                 </a>
-                <div id ="profile-details" className="content">
+                <div id="profile-details" className="content">
                   <a className="header">{name ? name : user.battletag}</a>
                   <div className="description">
                     <p>{profile ? <Link style={{ color: 'gold' }} to="/edit">Edit Profile</Link> : null}</p>
@@ -222,7 +219,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
             </div>
           </div>
           <div style={{ backgroundColor: 'rgb(0,103,164)' }} id="hero-img" className="ui segment">
-        
+
             <p></p>
             <p></p>
             <h1>{currentHero}</h1>
@@ -231,7 +228,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
             <p></p>
             <p></p>
           </div>
-          <div className="hero-img" ></div>
+          
           <div id="lower" className="ui grid">
             <div ref={compRef} className="four wide column">{stats.careerStats ? <HeroElimsGraph stats={heroeStats} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>
             <div className="four wide column">{stats.careerStats ? <BarChart stats={heroeStats} heroe={true} profileData={profileData} winRatio={winRatio} /> : "loading..."}</div>

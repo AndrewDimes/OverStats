@@ -18,8 +18,8 @@ function App() {
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like 
   // this  const token = createJWT(user); // where user was the document we created from mongo
   const [error, setError] = useState('')
- 
-  
+
+
   function handleSignUpOrLogin() {
     setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
   }
@@ -28,10 +28,10 @@ function App() {
     userService.logout();
     setUser({ user: null })
   }
-  
-  
- 
-  
+
+
+
+
   return (
     <div className="App">
       <Switch>
@@ -51,18 +51,18 @@ function App() {
           <HomePage />
         </Route>
 
-        {userService.getUser() ? 
-        <Switch>
-        <Route exact path='/profile'>
-          <ProfilePage  setUser={setUser} user={user} handleLogOut={handleLogOut} />
-        </Route>
-        <Route exact path="/search">
-          <SearchPage user={user} handleLogOut={handleLogOut} />
-        </Route>
-        </Switch>
-        :
-        <Redirect to='/login'/>
-}
+        {userService.getUser() ?
+          <Switch>
+            <Route exact path='/profile'>
+              <ProfilePage setUser={setUser} user={user} handleLogOut={handleLogOut} />
+            </Route>
+            <Route exact path="/search">
+              <SearchPage user={user} handleLogOut={handleLogOut} />
+            </Route>
+          </Switch>
+          :
+          <Redirect to='/login' />
+        }
 
 
       </Switch>

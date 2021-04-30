@@ -7,7 +7,7 @@ import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
 
 export default function SearchPage({ handleLogOut, user }) {
 
-   
+
     const [error, setError] = useState('')
     const [apiLink, setApiLink] = useState(``)
     const [searchData, setSearchData] = useState({})
@@ -21,14 +21,14 @@ export default function SearchPage({ handleLogOut, user }) {
 
     function handleChange(e) {
         let name;
-        if(e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN' ){
-            name="platform"
+        if (e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN') {
+            name = "platform"
         }
-        if(e.target.textContent === 'US' || e.target.textContent === 'EU' || e.target.textContent === 'ASIA' ){
-            name="region"
+        if (e.target.textContent === 'US' || e.target.textContent === 'EU' || e.target.textContent === 'ASIA') {
+            name = "region"
         }
-        
-        if(e.target.name){
+
+        if (e.target.name) {
             setState({
                 ...state,
                 [e.target.name]: e.target.value
@@ -50,38 +50,38 @@ export default function SearchPage({ handleLogOut, user }) {
     }
 
     useEffect(() => {
-          function makeApiCall() {
+        function makeApiCall() {
             fetch(apiLink)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data, 'here')
-                setSearchData(data)
-                console.log(searchData,'herrreeee')
-                if(data.error){
-                    setReady(false)
-                    setError(data.error)
-                } else {
-                    setReady(true)
-                }
-                
-          })
-          .catch((err) => console.log(err))
-          };
-          if(apiLink !== ''){
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data, 'here')
+                    setSearchData(data)
+                    console.log(searchData, 'herrreeee')
+                    if (data.error) {
+                        setReady(false)
+                        setError(data.error)
+                    } else {
+                        setReady(true)
+                    }
+
+                })
+                .catch((err) => console.log(err))
+        };
+        if (apiLink !== '') {
             makeApiCall();
 
-          }
-          
-        
-      }, [apiLink])
-
-      function onClick(){
-          ready ? setReady(false) : setReady(true)
-      }
-      useEffect(() => {
+        }
 
 
-      },[ready])
+    }, [apiLink])
+
+    function onClick() {
+        ready ? setReady(false) : setReady(true)
+    }
+    useEffect(() => {
+
+
+    }, [ready])
 
 
     return (
@@ -93,11 +93,11 @@ export default function SearchPage({ handleLogOut, user }) {
                     </div>
                 </div>
                 <div className="blue thirteen wide column LandingMessage">
-                    <div  className="content">
+                    <div className="content">
 
-                    {ready ? <ProfileInfo profile={false} name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
-                    
-                        
+                        {ready ? <ProfileInfo profile={false} name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
+
+
                     </div>
                 </div>
             </div>

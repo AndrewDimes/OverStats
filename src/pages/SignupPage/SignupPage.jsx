@@ -25,14 +25,14 @@ export default function SignUpPage(props) {
     function handleChange(e) {
         console.log(e.target.key)
         let name;
-        if(e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN' ){
-            name="platform"
+        if (e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN') {
+            name = "platform"
         }
-        if(e.target.textContent === 'US' || e.target.textContent === 'EU' || e.target.textContent === 'ASIA' ){
-            name="region"
+        if (e.target.textContent === 'US' || e.target.textContent === 'EU' || e.target.textContent === 'ASIA') {
+            name = "region"
         }
-        
-        if(e.target.name){
+
+        if (e.target.name) {
             setState({
                 ...state,
                 [e.target.name]: e.target.value
@@ -101,9 +101,9 @@ export default function SignUpPage(props) {
     return (
         <div id="main" className="ui vertically divided grid">
             <div className="row">
-                <div  id="signup-left" className="blue eight wide column BigLogo">
-                    <div  className="BigLogo-content">
-                    <img className="ow" src="../../retry.png"></img><br></br>                    </div>
+                <div id="signup-left" className="blue eight wide column BigLogo">
+                    <div className="BigLogo-content">
+                        <img className="ow" src="../../retry.png"></img><br></br>                    </div>
 
                 </div>
                 <div id="sidebar" className=" eight wide column LandingMessage">
