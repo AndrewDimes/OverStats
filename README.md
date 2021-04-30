@@ -31,7 +31,6 @@ The search page gives you access to all Overwatch accounts across platforms. Ent
 
 ![Search](public/search.png)
 
-
 ### Technologies Used
 
 - MongoDB
@@ -41,11 +40,18 @@ The search page gives you access to all Overwatch accounts across platforms. Ent
 - CanvasJS
 - Heroku
 
+### Trello Board & Wireframes
+
+- [Trello Board](https://trello.com/b/rp9a5koL/statmap-overwatch)
+
+![Wireframe](public/wireframe1.png)
+![Wireframe](public/wireframe2).png
 
 ### Getting Started
+To get started simply click the link before and sign up. If you would like a quick way to explore the site there is a tester account, its details are provided on the log in page.
 
 - [Deployed App](N/A)
-- [Trello Board](https://trello.com/b/rp9a5koL/statmap-overwatch)
+
 
 ### Future Features
 
