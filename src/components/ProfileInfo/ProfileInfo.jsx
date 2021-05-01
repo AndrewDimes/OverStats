@@ -177,6 +177,9 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                 </div>
               </div>
             </div>
+            
+            
+      
 
 
             <h1 className="hero-name">{mode}</h1>

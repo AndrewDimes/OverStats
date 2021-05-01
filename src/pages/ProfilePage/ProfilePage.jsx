@@ -43,9 +43,11 @@ export default function ProfilePage({ handleLogOut, user }) {
 
 
         <div className="ui vertically divided grid">
+
             <div className="row">
                 <div id="sidebar" className=" three wide column">
                     <div className="BigLogo-content">
+
                         <NavBar user={user} handleLogOut={handleLogOut} />
                     </div>
                 </div>
@@ -57,6 +59,7 @@ export default function ProfilePage({ handleLogOut, user }) {
                     </div>
                     :
                     <div className="blue thirteen wide column">
+
                         <div id="edit-msg" className="content">
                             <h1 >This is your profile page.<br></br> Please enter a valid battletag <Link to="/edit" style={{ color: 'gold' }}>here</Link> </h1>
                         </div>

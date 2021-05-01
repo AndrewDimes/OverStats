@@ -132,7 +132,7 @@ export default function SignUpPage(props) {
                                 placeholder="battletag"
                                 value={state.battletag}
                                 onChange={handleChange}
-                                required
+                                
                             />
                             <Form.Select
                                 fluid

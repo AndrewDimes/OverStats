@@ -33,8 +33,8 @@ export default function DeletePage({ handleLogOut, user }) {
                  
                         {tester ? 
                         <>
-                        <h1 >You can not delete tester account.<br></br> </h1> 
-                        <Link to='/profile'><button id="del-button" className="ui grey button"> Back </button></Link>
+                        <h1 >You can not delete tester account.<br></br></h1> 
+                        <Link to='/profile'><button id="back-button" className="ui grey button"> Get me out of here  </button></Link>
                         </>
                         : 
 <>
