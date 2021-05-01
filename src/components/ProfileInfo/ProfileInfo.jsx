@@ -205,16 +205,16 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
           </div>
           <div className="column">
 
-            <div className="chart" >
+            <div id="right-graph" className="chart" >
 
-              <div className="ui buttons">
+              <div  className="ui buttons">
 
-                <button className={buttonQuick ? 'ui positive button' : 'ui button'} onClick={changeQuick}>Quickplay</button>
+                <button id="switch-buttons" className={buttonQuick ? 'ui positive button' : 'ui button'} onClick={changeQuick}>Quickplay</button>
                 <div className="or"></div>
-                <button className={buttonComp ? 'ui positive button' : 'ui button'} onClick={changeComp}>Competitive</button>
+                <button id="switch-buttons" className={buttonComp ? 'ui positive button' : 'ui button'} onClick={changeComp}>Competitive</button>
               </div><br></br><br></br>
-              {stats.careerStats ? <BarChart stats={stats} heroe={false} profileData={profileData} winRatio={winRatio} /> : "loading..."}
-              {stats.careerStats ? <Graph stats={stats} profileData={profileData} winRatio={winRatio} /> : "loading..."}
+              {stats.careerStats ? <BarChart  stats={stats} heroe={false} profileData={profileData} winRatio={winRatio} /> : "loading..."}
+              {stats.careerStats ? <Graph stats={stats}   profileData={profileData} winRatio={winRatio} /> : "loading..."}
 
 
             </div>

@@ -190,8 +190,32 @@ body{
 .nav-title{
   font-family: 'Zen Dots', cursive;
   color: rgb(0,133, 208);
-  font-size: 250%;
+  font-size: 220%;
 }
+
+@media only screen and (max-width: 1200px) {
+ .nav-title{
+    font-size:150%;
+ }
+ .nav-ow {
+  width:60%;
+  height:auto;
+}
+}
+@media only screen and (max-width: 1000px) {
+  .nav-title{
+     font-size:120%;
+  }
+   
+ }
+ @media only screen and (max-width: 800px) {
+  .nav-title{
+     font-size:100%;
+  }
+   
+ }
+
+
 @media only screen and (max-width: 600px) {
   #nav-bar{
     height: 300%;
@@ -242,12 +266,47 @@ width: 100%;
   }
 
 }
+@media only screen and (max-width: 770px) {
+
+  .profile-table{
+  display:none;
+  
+  }
+
+}
 
 #medals {
   display: flex;
-  width:108%;
+  width:115%;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 1230px) {
+
+  #medals{
+    width:130%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+
+  #medals{
+    width:140%;
+  }
+}
+@media only screen and (max-width: 1130px) {
+
+  #medals{
+    width:150%;
+    margin-right:20%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  #right-graph{
+    margin-top:0%;
+  }
 }
 
 #lower{
@@ -357,3 +416,13 @@ width: 100%;
   }
 
 }
+
+@media only screen and (max-width: 600px) {
+
+  #switch-buttons{
+   
+  
+  }
+
+}
+
