@@ -7,6 +7,8 @@ import { Button, Form, Message } from 'semantic-ui-react'
 
 
 export default function ProfileInfo({ handleChange, handleSubmit, state, error, edit }) {
+
+    //options for the dropdown 
     const options = [
         { key: 'pc', text: 'PC', value: 'pc' },
         { key: 'xbl', text: 'XBL', value: 'xbl' },
@@ -17,6 +19,7 @@ export default function ProfileInfo({ handleChange, handleSubmit, state, error, 
         { text: 'EU', value: 'eu' },
         { text: 'ASIA', value: 'asia' },
     ]
+    ///////////////////////////
 
     return (
 

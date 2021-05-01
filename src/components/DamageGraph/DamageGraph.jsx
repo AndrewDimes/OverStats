@@ -8,10 +8,12 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default function DamageGraph({ stats }) {
 
+    /// Checking api sent back this info if not set to 0
     let heals;
     let dmg;
     stats.average.healingDoneAvgPer10Min ? heals = stats.average.healingDoneAvgPer10Min : heals = 0;
     stats.average.allDamageDoneAvgPer10Min ? dmg = stats.average.allDamageDoneAvgPer10Min : dmg = 0;
+    ////
 
     const options = {
         backgroundColor: "rgb(0,133,208)",
