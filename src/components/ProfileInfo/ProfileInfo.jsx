@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
 import BarChart from '../../components/BarChart/BarChart'
 import Graph from '../../components/Graph/Graph';
 import HeroElimsGraph from '../HeroElimsGraph/HeroElimsGraph';
@@ -11,19 +10,28 @@ import DamageGraph from '../DamageGraph/DamageGraph'
 
 
 export default function ProfileInfo({ user, profileData, name, profile }) {
+  
+  //this will scroll down to display hero stats
   const scrollToDiv = (ref) => window.scrollTo(0, ref.current.offsetTop);
-
-  const heroData = profileData.competitiveStats.careerStats ? profileData.competitiveStats.careerStats.ana : 'No Hero Data'
-  const compRef = useRef(null);
   const isScroll = () => scrollToDiv(compRef);
-  const [stats, setStats] = useState(profileData.competitiveStats)
-  const [mode, setMode] = useState('Competitive')
-  const [winRatio, setWinRatio] = useState(0)
-  const [buttonQuick, setButtonQuick] = useState(false)
-  const [buttonComp, setButtonComp] = useState(true)
-  const [heroeStats, setHeroeStats] = useState(heroData)
-  const [currentHero, setCurrentHero] = useState('All')
+  const compRef = useRef(null);
 
+  //setting the current data to all heroes
+  const heroData = profileData.quickPlayStats.careerStats ? profileData.quickPlayStats.careerStats.allHeroes : 'No Hero Data'
+  const [currentHero, setCurrentHero] = useState('All')
+  const [heroeStats, setHeroeStats] = useState(heroData)
+
+  //this switches between competitive stats and quickplay
+  const [buttonQuick, setButtonQuick] = useState(true)
+  const [buttonComp, setButtonComp] = useState(false)
+  const [mode, setMode] = useState('Quickplay')
+  const [stats, setStats] = useState(profileData.quickPlayStats)
+  
+ 
+  //getting the win rate for current game mode
+  const [winRatio, setWinRatio] = useState(0)
+
+  //setting the current selected hero from table
   function handleClick(heroeStats, heroName) {
     if (heroName === 'allHeroes') {
       heroName = 'All'
@@ -33,14 +41,31 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
     scrollToDiv(compRef)
   }
 
-
+  //generating table of heros the player has used this season
   const heroesList = stats.careerStats ? Object.entries(stats.careerStats).map((key, value) => {
     let kills;
     let deaths;
     let kd;
     let allHeroes;
-    key[1].combat.eliminations ? kills = key[1].combat.eliminations : kills = 0;
-    key[1].combat.deaths ? deaths = key[1].combat.deaths : deaths = 0;
+    let objTime
+    let fireTime
+
+    //Determining if player has the stats for this data in current season. Otherwise API doesnt send it back.
+    if(key[1].combat){
+      key[1].combat.eliminations ? kills = key[1].combat.eliminations : kills = 0;
+      key[1].combat.deaths ? deaths = key[1].combat.deaths : deaths = 0;
+    } else {
+      kills = 0;
+      deaths = 0;
+    }
+    if(key[1].average){
+      key[1].average.objectiveTimeAvgPer10Min ? objTime = key[1].average.objectiveTimeAvgPer10Min : objTime = 0
+      key[1].average.timeSpentOnFireAvgPer10Min ? fireTime = key[1].average.timeSpentOnFireAvgPer10Min : fireTime = 0
+    } else {
+      objTime = 0
+      fireTime = 0
+    }
+
     kd = (kills / deaths).toFixed(2)
     if (key[0] === 'allHeroes') {
       allHeroes = 'All'
@@ -54,6 +79,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
     if (kills === 0 && deaths === 0) {
       kd = 0
     }
+    ////////////////////////////////////////////////////////////////////////////////
     return (
       <tr className="table-hover" key={value} onClick={() => handleClick(key[1], key[0])}>
         <td><b>{allHeroes}</b></td>
@@ -61,8 +87,8 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
         <td>{key[1].game.gamesLost}</td>
         <td>{key[1].game.gamesWon ? (key[1].game.gamesWon / key[1].game.gamesPlayed).toFixed(2) : 0}</td>
         <td>{kd}</td>
-        <td>{key[1].average.objectiveTimeAvgPer10Min ? key[1].average.objectiveTimeAvgPer10Min : 0}</td>
-        <td>{key[1].average.timeSpentOnFireAvgPer10Min ? key[1].average.timeSpentOnFireAvgPer10Min : 0}</td>
+        <td>{objTime}</td>
+        <td>{fireTime}</td>
         <td>{key[1].game.timePlayed ? key[1].game.timePlayed : 0}</td>
       </tr>
     );
@@ -72,25 +98,32 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
 
 
-
+  //Switch between game modes for new stats
   function changeQuick() {
     setStats(profileData.quickPlayStats)
     setMode('Quickplay')
     setButtonQuick(true)
     setButtonComp(false)
+    setHeroeStats(profileData.quickPlayStats.careerStats ? profileData.quickPlayStats.careerStats.allHeroes : 'No Hero Data')
   }
   function changeComp() {
     setStats(profileData.competitiveStats)
     setMode('Competitive')
     setButtonQuick(false)
     setButtonComp(true)
+    setHeroeStats(profileData.competitiveStats.careerStats ? profileData.competitiveStats.careerStats.allHeroes : 'No Hero Data')
+
   }
 
+  // generating the win ratio for the current game mode
   useEffect(() => {
     if (stats) {
-      const winRatioRaw = parseInt(stats.games.won) / parseInt(stats.games.played)
-      const winSplit = winRatioRaw.toFixed(2).toString().split('.')
-      setWinRatio(winSplit[1])
+      if(stats.games){
+        const winRatioRaw = parseInt(stats.games.won) / parseInt(stats.games.played)
+        const winSplit = winRatioRaw.toFixed(2).toString().split('.')
+        setWinRatio(winSplit[1])
+
+      }
 
     }
 

@@ -12,7 +12,7 @@ export default function BarChart({ winRatio, profileData, stats, heroe }) {
     let winRate;
     let winRateSplit = []
     let imSry;
-
+    // determine if the player has this information in their profile otherwise set it to 0
     if (heroe) {
         stats.game ? wins = stats.game.gamesWon : wins = 0
         if (wins === undefined) {
@@ -39,7 +39,7 @@ export default function BarChart({ winRatio, profileData, stats, heroe }) {
         }
 
     }
-
+    ////////////////////////////////////
 
     const options = {
         backgroundColor: "rgb(0,133,208)",
@@ -48,7 +48,6 @@ export default function BarChart({ winRatio, profileData, stats, heroe }) {
         },
         data: [
             {
-                // Change type to "doughnut", "line", "splineArea", etc.
                 type: "doughnut",
                 dataPoints: [
 
@@ -62,9 +61,8 @@ export default function BarChart({ winRatio, profileData, stats, heroe }) {
     return (
         <div>
             <CanvasJSChart options={options}
-            /* onRef={ref => this.chart = ref} */
             />
-            {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+
         </div>
     );
 

@@ -6,6 +6,7 @@ import NavBar from '../../components/NavBar/NavBar';
 
 
 export default function DeletePage({ handleLogOut, user }) {
+    // if the user is tester hide delete buttons
     let tester;
     if(user.username === 'tester'){
         tester = true;
@@ -13,12 +14,10 @@ export default function DeletePage({ handleLogOut, user }) {
    
 
     async function handleClick() {
-        console.log('pew', user)
-        userService.deleteUser(user)
+        userService.deleteUser(user) // this will delete the user from the database
         handleLogOut()
 
     }
-    console.log(user)
 
     return (
         <div id="main" className="ui vertically divided grid">

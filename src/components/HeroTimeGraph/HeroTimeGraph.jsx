@@ -7,6 +7,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
 export default function HeroTimeGraph({ winRatio, profileData, stats }) {
+    //Check if the API sent back this info if not set to 0
     let fireTime = stats.average
     let fireTimeString;
     let fireTimeFinal
@@ -23,7 +24,7 @@ export default function HeroTimeGraph({ winRatio, profileData, stats }) {
     if (objTimeFinal !== 0) {
         objTimeFinal = parseFloat(objTimeString)
     }
-
+    ///////////////////////////////////
 
 
 
@@ -35,7 +36,6 @@ export default function HeroTimeGraph({ winRatio, profileData, stats }) {
         },
         data: [
             {
-                // Change type to "doughnut", "line", "splineArea", etc.
                 type: "column",
                 dataPoints: [
 
@@ -48,10 +48,7 @@ export default function HeroTimeGraph({ winRatio, profileData, stats }) {
     }
     return (
         <div>
-            <CanvasJSChart options={options}
-            /* onRef={ref => this.chart = ref} */
-            />
-            {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+            <CanvasJSChart options={options} />
         </div>
     );
 }

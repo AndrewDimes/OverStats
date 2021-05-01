@@ -12,14 +12,17 @@ export default function SearchPage({ handleLogOut, user }) {
     const [apiLink, setApiLink] = useState(``)
     const [searchData, setSearchData] = useState({})
     const [ready, setReady] = useState(false)
+
+    //this updates with the users input
     const [state, setState] = useState({
         battletag: '',
         platform: '',
         region: ''
     });
 
-
+    // this updates state
     function handleChange(e) {
+        //getting name keys for dropdowns
         let name;
         if (e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN') {
             name = "platform"
@@ -41,6 +44,8 @@ export default function SearchPage({ handleLogOut, user }) {
         }
 
     }
+
+    //updating api link to fetch after user input
     async function handleSubmit() {
         let p = state.battletag.replace('#', '-')
         let platform = state.platform.toLowerCase()
@@ -51,14 +56,12 @@ export default function SearchPage({ handleLogOut, user }) {
 
     useEffect(() => {
         function makeApiCall() {
-            fetch(apiLink)
+            fetch(apiLink) // calling api to retrieve player data
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data, 'here')
                     setSearchData(data)
-                    console.log(searchData, 'herrreeee')
                     if (data.error) {
-                        setReady(false)
+                        setReady(false) /// if fetch fails from invalid input set to false to keep search form shown on page
                         setError(data.error)
                     } else {
                         setReady(true)
@@ -69,15 +72,16 @@ export default function SearchPage({ handleLogOut, user }) {
         };
         if (apiLink !== '') {
             makeApiCall();
-
         }
-
 
     }, [apiLink])
 
+    //this will be set true when fetch is successful. It will then show profileinfo componenent and hide searchform
     function onClick() {
         ready ? setReady(false) : setReady(true)
     }
+
+    //refresh page when ready changes from true to false or false to true
     useEffect(() => {
 
 

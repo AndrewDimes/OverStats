@@ -60,6 +60,12 @@ body{
   align-items: center;
   height: 97vh;
 }
+@media only screen and (max-width: 700px) {
+
+  .BigLogo-content{
+    height:100%;
+  }
+}
 
 .content {
   display: flex;
@@ -316,6 +322,14 @@ width: 100%;
   justify-content: center;
   margin-left:3%;
 }
+@media only screen and (max-width: 600px) {
+
+  #lower{
+    width: 300%;
+  }
+}
+
+
 #table {
   margin-bottom: -100%;
 }
@@ -363,11 +377,17 @@ width: 100%;
 }
 #hero-img {
   width:100%;
-  margin-left: 4%;
+  margin-left: 8%;
   padding-left: 600px;
   border: 2px solid rgb(0,103,164);
   box-sizing:border-box;
-  box-shadow: inset -550px 0 50px 10px rgb(0,103,164);
+  box-shadow: inset -880px 0 50px 10px rgb(0,103,164);
+}
+@media only screen and (max-width: 600px) {
+
+  #hero-img{
+   display: none;
+  }
 }
 
 #edit-msg{
@@ -412,7 +432,12 @@ width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width:80%;
+    margin-left:12%;
     
+  }
+  .hero-name{
+    font-size: 90%;
   }
 
 }
@@ -420,8 +445,7 @@ width: 100%;
 @media only screen and (max-width: 600px) {
 
   #switch-buttons{
-   
-  
+   display: block;
   }
 
 }

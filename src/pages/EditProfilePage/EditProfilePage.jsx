@@ -7,17 +7,20 @@ import { useHistory } from 'react-router-dom';
 
 export default function EditProfilePage({ user, handleLogOut, handleSignUpOrLogin }) {
     const [error, setError] = useState('')
+
+    //this updates with the users input
     const [state, setState] = useState({
         battletag: user.battletag,
         platform: user.platform,
         region: user.region
 
     });
+
     const history = useHistory();
 
     async function editProfile() {
         try {
-            const data = await userService.edit(state, user._id);
+            const data = await userService.edit(state, user._id); /// sending over new user information
             console.log(data, 'in editprofile after userService.edit')
             handleSignUpOrLogin()
             history.push('/profile')
@@ -27,7 +30,7 @@ export default function EditProfilePage({ user, handleLogOut, handleSignUpOrLogi
     }
     function handleSubmit() {
         let p = state.battletag.replace('#', '-')
-        console.log(p)
+        //checking to make sure the new user information is valid in the API otherwise send invalid to user
         const makeApiCall = () => {
             fetch(`https://ow-api.com/v1/stats/${state.platform}/${state.region}/${p}/complete`)
                 .then((res) => res.json())
@@ -48,8 +51,11 @@ export default function EditProfilePage({ user, handleLogOut, handleSignUpOrLogi
         };
         makeApiCall();
     }
+
+    //update state
     function handleChange(e) {
-        console.log(e.target.key)
+
+        ///getting the name key for state
         let name;
         if (e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN') {
             name = "platform"

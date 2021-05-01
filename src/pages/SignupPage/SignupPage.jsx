@@ -23,7 +23,8 @@ export default function SignUpPage(props) {
 
 
     function handleChange(e) {
-        console.log(e.target.key)
+
+        ///getting key values for dropdown
         let name;
         if (e.target.textContent === 'PC' || e.target.textContent === 'XBL' || e.target.textContent === 'PSN') {
             name = "platform"

@@ -44,11 +44,8 @@ function signup(req, res) {
     }
     createUser()
   } else {
-    console.log(req.body, 'heree????')
     const filePath = `${uuidv4()}/${req.file.originalname}`
     const params = { Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer };
-    //your bucket name goes where collectorcat is 
-    //////////////////////////////////////////////////////////////////////////////////
     s3.upload(params, async function (err, data) {
       console.log(data, 'from aws') // data.Location is our photoUrl that exists on aws
       console.log(data.location, 'look right here')
@@ -72,8 +69,7 @@ function signup(req, res) {
 }
 
 function deleteUser(req, res) {
-  console.log(req.params.id, 'in controller')
-  const user = User.findByIdAndRemove(req.params.id).exec().then(doc => {
+    const user = User.findByIdAndRemove(req.params.id).exec().then(doc => { ///finding user in database than delete
     if (!doc) { return res.status(404).end(); }
     return res.status(204).end();
   })
@@ -84,11 +80,8 @@ function deleteUser(req, res) {
 }
 
 async function edit(req, res) {
-  console.log('User Id', req.params)
-  console.log('body', req.body)
   try {
-    const user = await User.findOne({ _id: req.user._id });
-    console.log(user, 'user is here')
+    const user = await User.findOne({ _id: req.user._id }); /// getting user from database
     user.battletag = req.body.battletag
     user.region = req.body.region
     user.platform = req.body.platform

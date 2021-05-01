@@ -13,12 +13,10 @@ import userService from '../../utils/userService'
 
 
 function App() {
-
-  const [user, setUser] = useState(userService.getUser()) // getUser decodes our JWT token, into a javascript object
+  const [user, setUser] = useState(userService.getUser()) // getUser decodes the JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like 
   // this  const token = createJWT(user); // where user was the document we created from mongo
   const [error, setError] = useState('')
-
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()) // getting the user from localstorage decoding the jwt
@@ -41,12 +39,6 @@ function App() {
         <Route exact path="/signup">
           <SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />
         </Route>
-        <Route exact path="/edit">
-          <EditProfilePage handleSignUpOrLogin={handleSignUpOrLogin} user={user} handleLogOut={handleLogOut} />
-        </Route>
-        <Route exact path="/delete">
-          <DeletePage handleSignUpOrLogin={handleSignUpOrLogin} user={user} handleLogOut={handleLogOut} />
-        </Route>
         <Route exact path="/">
           <HomePage />
         </Route>
@@ -58,6 +50,12 @@ function App() {
             </Route>
             <Route exact path="/search">
               <SearchPage user={user} handleLogOut={handleLogOut} />
+            </Route>
+            <Route exact path="/edit">
+              <EditProfilePage handleSignUpOrLogin={handleSignUpOrLogin} user={user} handleLogOut={handleLogOut} />
+            </Route>
+            <Route exact path="/delete">
+              <DeletePage handleSignUpOrLogin={handleSignUpOrLogin} user={user} handleLogOut={handleLogOut} />
             </Route>
           </Switch>
           :
