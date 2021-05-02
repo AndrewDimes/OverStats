@@ -10,7 +10,7 @@ import DamageGraph from '../DamageGraph/DamageGraph'
 
 
 export default function ProfileInfo({ user, profileData, name, profile }) {
-  
+
   //this will scroll down to display hero stats
   const scrollToDiv = (ref) => window.scrollTo(0, ref.current.offsetTop);
   const isScroll = () => scrollToDiv(compRef);
@@ -26,8 +26,8 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   const [buttonComp, setButtonComp] = useState(false)
   const [mode, setMode] = useState('Quickplay')
   const [stats, setStats] = useState(profileData.quickPlayStats)
-  
- 
+
+
   //getting the win rate for current game mode
   const [winRatio, setWinRatio] = useState(0)
 
@@ -51,14 +51,14 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
     let fireTime
 
     //Determining if player has the stats for this data in current season. Otherwise API doesnt send it back.
-    if(key[1].combat){
+    if (key[1].combat) {
       key[1].combat.eliminations ? kills = key[1].combat.eliminations : kills = 0;
       key[1].combat.deaths ? deaths = key[1].combat.deaths : deaths = 0;
     } else {
       kills = 0;
       deaths = 0;
     }
-    if(key[1].average){
+    if (key[1].average) {
       key[1].average.objectiveTimeAvgPer10Min ? objTime = key[1].average.objectiveTimeAvgPer10Min : objTime = 0
       key[1].average.timeSpentOnFireAvgPer10Min ? fireTime = key[1].average.timeSpentOnFireAvgPer10Min : fireTime = 0
     } else {
@@ -118,7 +118,7 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
   // generating the win ratio for the current game mode
   useEffect(() => {
     if (stats) {
-      if(stats.games){
+      if (stats.games) {
         const winRatioRaw = parseInt(stats.games.won) / parseInt(stats.games.played)
         const winSplit = winRatioRaw.toFixed(2).toString().split('.')
         setWinRatio(winSplit[1])
@@ -210,9 +210,9 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
                 </div>
               </div>
             </div>
-            
-            
-      
+
+
+
 
 
             <h1 className="hero-name">{mode}</h1>
@@ -240,19 +240,19 @@ export default function ProfileInfo({ user, profileData, name, profile }) {
 
             <div id="right-graph" className="chart" >
 
-              <div  className="ui buttons">
+              <div className="ui buttons">
 
                 <button id="switch-buttons" className={buttonQuick ? 'ui positive button' : 'ui button'} onClick={changeQuick}>Quickplay</button>
                 <div className="or"></div>
                 <button id="switch-buttons" className={buttonComp ? 'ui positive button' : 'ui button'} onClick={changeComp}>Competitive</button>
               </div><br></br><br></br>
-              {stats.careerStats ? <BarChart  stats={stats} heroe={false} profileData={profileData} winRatio={winRatio} /> : "loading..."}
-              {stats.careerStats ? <Graph stats={stats}   profileData={profileData} winRatio={winRatio} /> : "loading..."}
+              {stats.careerStats ? <BarChart stats={stats} heroe={false} profileData={profileData} winRatio={winRatio} /> : "loading..."}
+              {stats.careerStats ? <Graph stats={stats} profileData={profileData} winRatio={winRatio} /> : "loading..."}
 
 
             </div>
           </div>
-          <div style={{ backgroundColor: 'rgb(0,103,164)', backgroundImage: `url(/${currentHero.toLowerCase()}.png)`, backgroundPosition:'left', backgroundRepeat: 'no-repeat' }} id="hero-img" className="ui segment">
+          <div style={{ backgroundColor: 'rgb(0,103,164)', backgroundImage: `url(/${currentHero.toLowerCase()}.png)`, backgroundPosition: 'left', backgroundRepeat: 'no-repeat' }} id="hero-img" className="ui segment">
 
             <p></p>
             <p></p>
