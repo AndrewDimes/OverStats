@@ -50,7 +50,7 @@ The search page gives you access to all Overwatch accounts across platforms. Ent
 ### Getting Started
 To get started simply click the link before and sign up. If you would like a quick way to explore the site there is a tester account, its details are provided on the log in page.
 
-- [Deployed App](N/A)
+- [Deployed App](http://myoverstats.herokuapp.com/)
 
 
 ### Future Features
