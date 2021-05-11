@@ -5,6 +5,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import Dashboard from '../Dashboard/Dashboard';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import SearchPage from '../SearchPage/SearchPage';
 import DeletePage from '../DeletePage/DeletePage';
@@ -46,7 +47,10 @@ function App() {
         {userService.getUser() ?
           <Switch>
             <Route exact path='/profile'>
-              <ProfilePage setUser={setUser} user={user} handleLogOut={handleLogOut} />
+              <ProfilePage user={user} handleLogOut={handleLogOut} />
+            </Route>
+            <Route exact path='/dashboard'>
+              <Dashboard  user={user} handleLogOut={handleLogOut} />
             </Route>
             <Route exact path="/search">
               <SearchPage user={user} handleLogOut={handleLogOut} />
