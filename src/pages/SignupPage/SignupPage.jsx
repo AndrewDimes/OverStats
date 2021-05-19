@@ -166,14 +166,6 @@ export default function SignUpPage(props) {
                                 onChange={handleChange}
                                 required
                             />
-                            <Form.Field>
-                                <Form.Input
-                                    type="file"
-                                    name="photo"
-                                    placeholder="upload image"
-                                    onChange={handleFileInput}
-                                />
-                            </Form.Field>
                             <Button
                                 color='blue'
 
