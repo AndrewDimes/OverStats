@@ -28,11 +28,9 @@ function signup(req, res) {
 
   // FilePath unique name to be saved to our butckt
   if (req.body.photo === '') {
-    console.log('we in')
     req.body.photo = 'https://react.semantic-ui.com/images/wireframe/square-image.png'
     async function createUser() {
       const user = new User({ ...req.body });
-      console.log(user)
       try {
         await user.save();
         const token = createJWT(user); // user is the payload so this is the object in our jwt
