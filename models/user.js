@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
   battletag: String,
   region: String,
   platform: String,
-  photoUrl: String  // string from aws!
 }, {
   timestamps: true
 });
@@ -32,9 +31,6 @@ userSchema.set('toObject', {
   }
 });
 
-
-// DO NOT DEFINE instance methods with arrow functions, 
-// they prevent the binding of this
 userSchema.pre('save', function(next) {
   // 'this' will be set to the current document
   const user = this;

@@ -14,22 +14,7 @@ module.exports = {
 };
 
 
-
-
-
-
-
-
-function signup(req, res) {
-  
-  //////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////
-
-  // FilePath unique name to be saved to our butckt
-  if (req.body.photo === '') {
-    req.body.photo = 'https://react.semantic-ui.com/images/wireframe/square-image.png'
-    async function createUser() {
+async function signup(req, res) {
       const user = new User({ ...req.body });
       try {
         await user.save();
@@ -40,31 +25,7 @@ function signup(req, res) {
         res.status(400).json(err);
       }
     }
-    createUser()
-  } else {
-    const filePath = `${uuidv4()}/${req.file.originalname}`
-    const params = { Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer };
-    s3.upload(params, async function (err, data) {
-      console.log(data, 'from aws') // data.Location is our photoUrl that exists on aws
-      console.log(data.location, 'look right here')
-      const user = new User({ ...req.body, photoUrl: data.Location });
-      try {
-        await user.save();
-        const token = createJWT(user); // user is the payload so this is the object in our jwt
-        res.json({ token });
-      } catch (err) {
-        // Probably a duplicate email
-        res.status(400).json(err);
-      }
 
-
-
-    })
-  }
-
-  //////////////////////////////////////////////////////////////////////////////////
-
-}
 
 function deleteUser(req, res) {
     const user = User.findByIdAndRemove(req.params.id).exec().then(doc => { ///finding user in database than delete
