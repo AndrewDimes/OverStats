@@ -5,7 +5,6 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
-import Dashboard from '../Dashboard/Dashboard';
 import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import SearchPage from '../SearchPage/SearchPage';
 import DeletePage from '../DeletePage/DeletePage';
@@ -48,9 +47,6 @@ function App() {
           <Switch>
             <Route exact path='/profile'>
               <ProfilePage user={user} handleLogOut={handleLogOut} />
-            </Route>
-            <Route exact path='/dashboard'>
-              <Dashboard  user={user} handleLogOut={handleLogOut} />
             </Route>
             <Route exact path="/search">
               <SearchPage user={user} handleLogOut={handleLogOut} />
