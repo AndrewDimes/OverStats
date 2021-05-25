@@ -15,20 +15,20 @@ module.exports = {
 
 
 async function signup(req, res) {
-      const user = new User({ ...req.body });
-      try {
-        await user.save();
-        const token = createJWT(user); // user is the payload so this is the object in our jwt
-        res.json({ token });
-      } catch (err) {
-        // Probably a duplicate email
-        res.status(400).json(err);
-      }
-    }
+  const user = new User({ ...req.body });
+  try {
+    await user.save();
+    const token = createJWT(user); // user is the payload so this is the object in our jwt
+    res.json({ token });
+  } catch (err) {
+    // Probably a duplicate email
+    res.status(400).json(err);
+  }
+}
 
 
 function deleteUser(req, res) {
-    const user = User.findByIdAndRemove(req.params.id).exec().then(doc => { ///finding user in database than delete
+  const user = User.findByIdAndRemove(req.params.id).exec().then(doc => { ///finding user in database than delete
     if (!doc) { return res.status(404).end(); }
     return res.status(204).end();
   })

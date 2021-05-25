@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   battletag: String,
   region: String,
-  platform: String,
+  platform: String
 }, {
   timestamps: true
 });
