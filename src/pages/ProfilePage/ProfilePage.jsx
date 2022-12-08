@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
-import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
+import Popup from '../../components/Popup/Popup';
 
 
 
@@ -43,7 +44,6 @@ export default function ProfilePage({ handleLogOut, user }) {
 
 
         <div className="ui vertically divided grid">
-
             <div className="row">
                 <div id="sidebar" className=" three wide column">
                     <div className="BigLogo-content">
@@ -61,6 +61,8 @@ export default function ProfilePage({ handleLogOut, user }) {
                     <div className="blue thirteen wide column">
 
                         <div id="edit-msg" className="content">
+                        <Popup />
+
                             <h1 >This is your profile page.<br></br> Please enter a valid battletag <Link to="/edit" style={{ color: 'gold' }}>here</Link> </h1>
                         </div>
                     </div>
