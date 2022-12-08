@@ -62,7 +62,6 @@ export default function ProfilePage({ handleLogOut, user }) {
 
                         <div id="edit-msg" className="content">
                         <Popup />
-
                             <h1 >This is your profile page.<br></br> Please enter a valid battletag <Link to="/edit" style={{ color: 'gold' }}>here</Link> </h1>
                         </div>
                     </div>

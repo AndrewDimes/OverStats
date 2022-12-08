@@ -1,3 +1,7 @@
+# Service Down
+
+As of October 3rd, 2022, statistics on OverStats have stopped updating due to changes made by Blizzard as part of the Overwatch 2 launch. Until our current API provider begins sharing data again or we are able to find a new one we will not be able to display game data. We want to support Overwatch 2, but can only do so once data is made available by Blizzard. Thank you for your support over the years. It’s been our pleasure to be part of the wonderful Overwatch community, and we look forward to supporting Overwatch 2 ASAP.
+
 # OverStats
 
 OverStats is a web application that helps users view their in-game Overwatch statistics. Sign up with your battletag(pc) or player name(xbl or psn) and you will be brought to your dashboard that will show your most up to date data clearly visualized in graphs. Want to search other players stats? Click on search and enter the players information to be brought to their profile where you can see how they match up to you.
