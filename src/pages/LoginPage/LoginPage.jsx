@@ -126,7 +126,7 @@ export default function LoginPage(props) {
                                 New to us? <Link to='/signup'>Sign Up</Link>
                             </Message>
                             {error ? <ErrorMessage error={error} /> : null}
-                            <Message className="test-msg">For testing purposes: <br></br>Email - tester@email.com<br></br>Password - tester</Message>
+                            <Message className="test-msg">For testing purposes: <br></br>Email - test@mail.com<br></br>Password - tester</Message>
 
                         </Form>
 

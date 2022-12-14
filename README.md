@@ -1,6 +1,6 @@
 # Service Down
 
-As of October 3rd, 2022, statistics on OverStats have stopped updating due to changes made by Blizzard as part of the Overwatch 2 launch. Until our current API provider begins sharing data again or we are able to find a new one we will not be able to display game data. We want to support Overwatch 2, but can only do so once data is made available by Blizzard. Thank you for your support over the years. It’s been our pleasure to be part of the wonderful Overwatch community, and we look forward to supporting Overwatch 2 ASAP.
+As of October 3rd, 2022, statistics on OverStats have stopped updating due to changes made by Blizzard as part of the Overwatch 2 launch. Until our current Blizzard begins sharing data again we will not be able to display game data. We want to support Overwatch 2, but can only do so once data is made available by Blizzard. Thank you for understanding. We look forward to supporting Overwatch 2 as soon as possible.
 
 # OverStats
 
