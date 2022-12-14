@@ -52,19 +52,11 @@ body{
 .chart {
   width:100%;
 }
-
-
 .BigLogo-content{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 97vh;
-}
-@media only screen and (max-width: 700px) {
-
-  .BigLogo-content{
-    height:100%;
-  }
 }
 
 .content {
@@ -74,12 +66,24 @@ body{
   align-items: center;
 }
 
+.mobile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #right-items {
   height:97vh;
 }
 
 
 #sidebar {
+  background-color:rgb(231, 231, 231);
+  height:60%;
+}
+#mobile-sidebar {
   background-color:rgb(231, 231, 231);
   height:60%;
 }
@@ -115,6 +119,7 @@ body{
 #buttons{
   width:100%
 }
+
 @media only screen and (max-width: 740px) {
   #button {
   width:35%;
@@ -199,39 +204,14 @@ body{
   font-size: 220%;
 }
 
-@media only screen and (max-width: 1200px) {
- .nav-title{
-    font-size:150%;
- }
- .nav-ow {
-  width:60%;
-  height:auto;
-}
-}
-@media only screen and (max-width: 1000px) {
+
+@media only screen and (max-width: 1250px) {
   .nav-title{
-     font-size:120%;
-  }
-   
- }
- @media only screen and (max-width: 800px) {
-  .nav-title{
-     font-size:100%;
+     font-size:130%;
   }
    
  }
 
-
-@media only screen and (max-width: 600px) {
-  #nav-bar{
-    height: 300%;
-    width:200%;
-    position: unset;
-  }
-  #nav-btn{
-    display:none;
-  }
-}
 
 .menu-item{
  height:0%;

@@ -76,7 +76,7 @@ export default function SignUpPage(props) {
 
     return (
         <div id="main" className="ui vertically divided grid">
-            <div className="row">
+            <div id='non-mobile-tablet' className="row">
                 <div id="signup-left" className="blue eight wide column BigLogo">
                     <div className="BigLogo-content">
                         <img className="ow" src="../../retry.png"></img><br></br>                    </div>
@@ -108,7 +108,7 @@ export default function SignUpPage(props) {
                                 placeholder="battletag"
                                 value={state.battletag}
                                 onChange={handleChange}
-                                
+
                             />
                             <Form.Select
                                 fluid
@@ -149,7 +149,86 @@ export default function SignUpPage(props) {
                                 disabled={invalidForm}
                             >
                                 Signup
-                      </Button>
+                            </Button>
+
+                            <Message>
+                                Already have an account? <Link to='/login'>Log In</Link>
+                            </Message>
+                            {error ? <ErrorMessage error={error} /> : null}
+                        </Form>
+
+                    </div>
+                </div>
+            </div>
+            <div id='mobile-tablet' className="row">
+                <div id="sidebar" className=" sixteen wide column LandingMessage">
+                    <div id="right-items" className="mobile-content">
+                        <h1 className="signup-title">Sign Up</h1>
+
+                        <Form className="signup-form" autoComplete="off" onSubmit={handleSubmit}>
+
+                            <Form.Input
+                                name="username"
+                                placeholder="username"
+                                value={state.username}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Form.Input
+                                type="email"
+                                name="email"
+                                placeholder="email"
+                                value={state.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Form.Input
+                                name="battletag"
+                                placeholder="battletag"
+                                value={state.battletag}
+                                onChange={handleChange}
+
+                            />
+                            <Form.Select
+                                fluid
+                                key="platform"
+                                name="platform"
+                                options={options}
+                                onChange={handleChange}
+                                placeholder='Platform'
+                            />
+                            <Form.Select
+                                fluid
+                                name="region"
+                                options={optionsTwo}
+                                onChange={handleChange}
+                                placeholder='Region'
+                            />
+                            <Form.Input
+                                name="password"
+                                type="password"
+                                placeholder="password"
+                                value={state.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Form.Input
+                                name="passwordConf"
+                                type="password"
+                                placeholder="Confirm Password"
+                                value={state.passwordConf}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Button
+                                color='blue'
+
+                                type="submit"
+                                className="btn"
+                                disabled={invalidForm}
+                            >
+                                Signup
+                            </Button>
 
                             <Message>
                                 Already have an account? <Link to='/login'>Log In</Link>

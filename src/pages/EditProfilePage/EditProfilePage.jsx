@@ -80,13 +80,20 @@ export default function EditProfilePage({ user, handleLogOut, handleSignUpOrLogi
 
     return (
         <div id="main" className="ui vertically divided grid">
-            <div className="row">
+            <div id='non-mobile-tablet-profile' className="row">
                 <div id="sidebar" className="three wide column BigLogo">
                     <div className="BigLogo-content">
                         <NavBar user={user} handleLogOut={handleLogOut} />
                     </div>
                 </div>
                 <div className="blue thirteen wide column LandingMessage">
+                    <div className="content">
+                        <SearchForm error={error} handleSubmit={handleSubmit} edit={true} state={state} handleChange={handleChange} />
+                    </div>
+                </div>
+            </div>
+            <div id='mobile-tablet-profile' className="row">
+                <div className="blue sixteen wide column LandingMessage">
                     <div className="content">
                         <SearchForm error={error} handleSubmit={handleSubmit} edit={true} state={state} handleChange={handleChange} />
                     </div>

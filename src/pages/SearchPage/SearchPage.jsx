@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
+import MobileNavBar from '../../components/MobileNavBar/MobileNavBar';
 import SearchForm from '../../components/SearchForm/SearchForm'
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
 
@@ -90,18 +91,25 @@ export default function SearchPage({ handleLogOut, user }) {
 
     return (
         <div id="main" className="ui vertically divided grid">
-            <div className="row">
+            <div id='non-mobile-tablet-profile' className="row">
                 <div id="sidebar" className="three wide column BigLogo">
                     <div className="BigLogo-content">
                         <NavBar onClick={onClick} user={user} handleLogOut={handleLogOut} />
                     </div>
                 </div>
                 <div className="blue thirteen wide column LandingMessage">
+                    
                     <div className="content">
-
                         {ready ? <ProfileInfo profile={false} name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
-
-
+                    </div>
+                </div>
+            </div>
+            <div id='mobile-tablet-profile' className="row">
+                <div  id='mobile-content' className="blue sixteen wide column">
+                    <br />
+                <MobileNavBar className="mobile-nav-buttons" user={user} handleLogOut={handleLogOut} />
+                    <div className="content">
+                        {ready ? <ProfileInfo profile={false} name={state.battletag} profileData={searchData} user={user} /> : <SearchForm error={error} state={state} handleChange={handleChange} handleSubmit={handleSubmit} />}
                     </div>
                 </div>
             </div>

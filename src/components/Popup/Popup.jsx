@@ -15,8 +15,7 @@ export default function PopupMessage(){
             <button className="close" onClick={close}>
               &times;
             </button>
-            <div className="header"> Overwatch 2 is here!</div>
-            <div className="content">
+            <div className="header">
               {' '}
               As of October 3rd, 2022, statistics on OverStats have stopped updating due to changes made by Blizzard as 
               part of the Overwatch 2 launch. Until our current Blizzard begins sharing data again we will not be able to display game data.
